@@ -14,7 +14,27 @@ struct Constants{
     }
     
     struct Segues{
+        
         static let goToLogin = "goToLogin"
         static let goToRegister = "goToRegister"
+        static let registerToTopMovies = "registerToTopMovies"
+        static let loginToTopMovies = "loginToTopMovies"
+        static let goToDetails = "goToDetails"
+        
+        struct TabBarId{
+//            option name
+            static let topMovie = "topMovie"
+            static let favoriteMovie = "favoriteMovie"
+            
+        }
+        
+        struct APIKey {
+            static let keyValue = "72597abf4f8c2d4f845321712c1293d5"
+        }
+        
+        struct Urls{
+            
+            static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
+        }
     }
 }

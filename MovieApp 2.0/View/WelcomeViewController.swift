@@ -19,7 +19,7 @@ class WelcomeViewController: UIViewController {
         titleTextShow()
     }
 
-//MARK: - Title Action
+//MARK: - titleTextShow
     func titleTextShow(){
         titleText.text = ""
         var index = 0.0
@@ -38,7 +38,7 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func getStartButtonPressed(_ sender: UIButton) {
 //        nextView
-        
+        performSegue(withIdentifier: Constants.Segues.goToLogin, sender: self)
     }
     
 }

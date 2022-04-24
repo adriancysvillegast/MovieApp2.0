@@ -8,23 +8,40 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var continueButtonOutlet: UIButton!
+    
+    
+    //MARK: - Vars
+    let loginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+    }
+    //MARK: - buttonCorner
+    func buttonCorner(){
         continueButtonOutlet.layer.cornerRadius = 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - loginButtonPressed
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        
+//        loginMethods
+        
+        let optionTabBar = storyboard?.instantiateViewController(withIdentifier: "OptionsTabViewController") as! OptionsTabViewController
+        
+        present(optionTabBar, animated: true, completion: nil)
     }
-    */
+    
+    //MARK: - RegisterButtonPressed
+    
+    @IBAction func registerButtonPressed(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: Constants.Segues.goToRegister, sender: self)
+    }
+    
 }
