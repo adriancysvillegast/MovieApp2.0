@@ -12,4 +12,9 @@ struct Constants{
     struct Title{
         static let titleName = "Movies App"
     }
+    
+    struct Segues{
+        static let goToLogin = "goToLogin"
+        static let goToRegister = "goToRegister"
+    }
 }

@@ -20,8 +20,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3G9-Ko-NeQ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Fnn-Io-cEv">
+                                        <rect key="frame" x="32" y="331" width="350" height="112"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="70"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLw-YT-h0f">
-                                        <rect key="frame" x="80" y="714" width="254" height="60"/>
+                                        <rect key="frame" x="137.5" y="714" width="139.5" height="60"/>
                                         <color key="backgroundColor" name="ButtonLoginColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="b6X-tp-kwQ"/>
@@ -35,21 +41,12 @@
                                             <action selector="getStartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="buo-Rn-k5k"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Fnn-Io-cEv">
-                                        <rect key="frame" x="20" y="331" width="374" height="112"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="70"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Fnn-Io-cEv" firstAttribute="leading" secondItem="3G9-Ko-NeQ" secondAttribute="leading" constant="20" id="0w1-Ql-qS1"/>
-                                    <constraint firstItem="bLw-YT-h0f" firstAttribute="leading" secondItem="3G9-Ko-NeQ" secondAttribute="leading" constant="80" id="Lyv-Mv-1xM"/>
                                     <constraint firstAttribute="bottom" secondItem="bLw-YT-h0f" secondAttribute="bottom" id="NcA-F8-ue1"/>
                                     <constraint firstItem="Fnn-Io-cEv" firstAttribute="centerX" secondItem="3G9-Ko-NeQ" secondAttribute="centerX" id="P9x-aR-zlq"/>
-                                    <constraint firstAttribute="trailing" secondItem="bLw-YT-h0f" secondAttribute="trailing" constant="80" id="X0P-de-TCx"/>
                                     <constraint firstItem="Fnn-Io-cEv" firstAttribute="centerY" secondItem="3G9-Ko-NeQ" secondAttribute="centerY" id="gIs-Jc-fTy"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fnn-Io-cEv" secondAttribute="trailing" constant="20" id="tor-0W-RLS"/>
+                                    <constraint firstItem="bLw-YT-h0f" firstAttribute="centerX" secondItem="3G9-Ko-NeQ" secondAttribute="centerX" id="nVL-hk-Fss"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -66,7 +63,7 @@
                     <connections>
                         <outlet property="getStartOutlet" destination="bLw-YT-h0f" id="DVX-vU-RJV"/>
                         <outlet property="titleText" destination="Fnn-Io-cEv" id="Zo9-rv-gZG"/>
-                        <segue destination="6D0-Sj-pat" kind="show" id="xwR-py-jN8"/>
+                        <segue destination="6D0-Sj-pat" kind="show" identifier="goToLogin" id="xwR-py-jN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -177,7 +174,7 @@
                     <navigationItem key="navigationItem" id="6u4-Fg-Sc7"/>
                     <connections>
                         <outlet property="continueButtonOutlet" destination="ea8-6X-AJr" id="mO7-eM-Odk"/>
-                        <segue destination="puK-Tl-K9m" kind="show" id="i5O-IG-Pjq"/>
+                        <segue destination="puK-Tl-K9m" kind="show" identifier="goToRegister" id="i5O-IG-Pjq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPg-xH-f5z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -274,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRP-CY-8w2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="825"/>
+            <point key="canvasLocation" x="1922" y="828"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tyA-8R-apa">
