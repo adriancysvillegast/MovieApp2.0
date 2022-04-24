@@ -403,6 +403,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bBm-ET-d7U"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vxq-lG-0Yd">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -455,7 +456,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aP3-wk-N0t"/>
+        <segue reference="YKl-1E-Meu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="ButtonGetStart">

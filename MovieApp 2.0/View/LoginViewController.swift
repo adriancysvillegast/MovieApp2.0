@@ -29,12 +29,10 @@ class LoginViewController: UIViewController {
     //MARK: - loginButtonPressed
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+    
+        loginViewModel.printvalue()
         
-//        loginMethods
-        
-        let optionTabBar = storyboard?.instantiateViewController(withIdentifier: "OptionsTabViewController") as! OptionsTabViewController
-        
-        present(optionTabBar, animated: true, completion: nil)
+        performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
     }
     
     //MARK: - RegisterButtonPressed

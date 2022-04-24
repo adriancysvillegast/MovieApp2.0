@@ -8,6 +8,15 @@
 import Foundation
 
 
-struct LoginViewModel{
+class LoginViewModel{
+    
+    let getDataAPI = GetDataAPI()
+    
+    func printvalue(){
+        getDataAPI.getTokenValidation()
+    }
+    
+    
+    
     
 }
