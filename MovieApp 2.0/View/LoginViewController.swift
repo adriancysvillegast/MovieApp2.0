@@ -10,7 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var continueButtonOutlet: UIButton!
-    
+
     
     //MARK: - Vars
     let loginViewModel = LoginViewModel()
@@ -20,17 +20,21 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    
+    func configuration(){
+    }
+    
     //MARK: - buttonCorner
     func buttonCorner(){
         continueButtonOutlet.layer.cornerRadius = 10
     }
     
-    
+
     //MARK: - loginButtonPressed
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
     
-        loginViewModel.printvalue()
         
         performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
     }

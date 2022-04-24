@@ -10,12 +10,6 @@ import Foundation
 
 class LoginViewModel{
     
-    let getDataAPI = GetDataAPI()
-    
-    func printvalue(){
-        getDataAPI.getTokenValidation()
-    }
-    
     
     
     

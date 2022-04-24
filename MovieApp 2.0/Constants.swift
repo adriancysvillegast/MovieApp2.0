@@ -21,7 +21,15 @@ struct Constants{
         
         struct Urls{
             
-            static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
+            static let urlTopMovies = "https://api.themoviedb.org/3/movie/popular?api_key=\(Constants.API.APIKey.keyValue)&language=en-US&page="
+            
+            
+            struct InProcess {
+                static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
+                
+                static let urlSessionId = "https://api.themoviedb.org/3/authentication/session/new?api_key="
+                
+            }
         }
     }
     

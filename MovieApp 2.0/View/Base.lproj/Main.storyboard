@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRP-CY-8w2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434" y="843"/>
+            <point key="canvasLocation" x="1434" y="960"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vpd-BZ-FSw">
@@ -289,11 +289,21 @@
                                             <constraint firstItem="FEj-D4-WZN" firstAttribute="leading" secondItem="F6k-rb-D52" secondAttribute="leading" constant="20" id="xua-aS-OVG"/>
                                         </constraints>
                                     </stackView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9sR-Xh-pW8">
+                                        <rect key="frame" x="145" y="311" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="826-F9-Km1"/>
+                                            <constraint firstAttribute="width" constant="100" id="PO8-dR-w2c"/>
+                                        </constraints>
+                                        <color key="color" systemColor="systemPurpleColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="9sR-Xh-pW8" firstAttribute="centerY" secondItem="gxT-ba-zyB" secondAttribute="centerY" id="Hva-7B-kSB"/>
                                     <constraint firstItem="F6k-rb-D52" firstAttribute="leading" secondItem="gxT-ba-zyB" secondAttribute="leading" id="RXm-n6-BmI"/>
                                     <constraint firstAttribute="trailing" secondItem="F6k-rb-D52" secondAttribute="trailing" id="SAB-ge-8Jk"/>
                                     <constraint firstItem="F6k-rb-D52" firstAttribute="centerY" secondItem="gxT-ba-zyB" secondAttribute="centerY" id="Usz-zv-ANb"/>
+                                    <constraint firstItem="9sR-Xh-pW8" firstAttribute="centerX" secondItem="gxT-ba-zyB" secondAttribute="centerX" id="WsX-fP-6dU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -309,13 +319,13 @@
                     <navigationItem key="navigationItem" id="6u4-Fg-Sc7"/>
                     <connections>
                         <outlet property="continueButtonOutlet" destination="ea8-6X-AJr" id="mO7-eM-Odk"/>
-                        <segue destination="puK-Tl-K9m" kind="show" identifier="goToRegister" id="i5O-IG-Pjq"/>
                         <segue destination="jM5-lX-EAQ" kind="show" identifier="loginToTopMovies" id="YKl-1E-Meu"/>
+                        <segue destination="puK-Tl-K9m" kind="show" identifier="goToRegister" id="TFz-Fh-w6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPg-xH-f5z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="63"/>
+            <point key="canvasLocation" x="1433.8461538461538" y="62.559241706161131"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -456,7 +466,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YKl-1E-Meu"/>
+        <segue reference="aP3-wk-N0t"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="ButtonGetStart">
@@ -470,6 +480,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -9,10 +9,12 @@ import Foundation
 
 struct TopMovieViewModel{
     
+    let getDataAPI = GetDataAPI()
     
     
+    func printData(){
+        getDataAPI.fetchData()
+    }
     
-    
-    
-    
+ 
 }

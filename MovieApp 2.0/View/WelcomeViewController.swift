@@ -37,6 +37,11 @@ class WelcomeViewController: UIViewController {
     //MARK: - Get Start Button
     
     @IBAction func getStartButtonPressed(_ sender: UIButton) {
+        
+        
+        
+        
+        
 //        nextView
         performSegue(withIdentifier: Constants.Segues.goToLogin, sender: self)
     }

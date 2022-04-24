@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09368B6028152234001DCEF0 /* GetDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B5F28152234001DCEF0 /* GetDataAPI.swift */; };
-		09368B622815299B001DCEF0 /* TokenValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B612815299B001DCEF0 /* TokenValidation.swift */; };
+		09368B622815299B001DCEF0 /* TopMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B612815299B001DCEF0 /* TopMovie.swift */; };
+		09368B642815B3B1001DCEF0 /* DetailMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B632815B3B0001DCEF0 /* DetailMovie.swift */; };
 		09A0A29E2814D250002A13A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0A29D2814D250002A13A7 /* Constants.swift */; };
 		09A0A2A02814D4BD002A13A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0A29F2814D4BD002A13A7 /* LoginViewController.swift */; };
 		09A0A2A22814E0CC002A13A7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0A2A12814E0CC002A13A7 /* RegisterViewController.swift */; };
@@ -32,7 +33,8 @@
 /* Begin PBXFileReference section */
 		0838E1912A0194BAC978FBC2 /* Pods-MovieApp 2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp 2.0.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp 2.0/Pods-MovieApp 2.0.debug.xcconfig"; sourceTree = "<group>"; };
 		09368B5F28152234001DCEF0 /* GetDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataAPI.swift; sourceTree = "<group>"; };
-		09368B612815299B001DCEF0 /* TokenValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenValidation.swift; sourceTree = "<group>"; };
+		09368B612815299B001DCEF0 /* TopMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMovie.swift; sourceTree = "<group>"; };
+		09368B632815B3B0001DCEF0 /* DetailMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovie.swift; sourceTree = "<group>"; };
 		09A0A29D2814D250002A13A7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		09A0A29F2814D4BD002A13A7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		09A0A2A12814E0CC002A13A7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +83,8 @@
 		09A0A29C2814CFCB002A13A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09368B612815299B001DCEF0 /* TokenValidation.swift */,
+				09368B612815299B001DCEF0 /* TopMovie.swift */,
+				09368B632815B3B0001DCEF0 /* DetailMovie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,7 +283,7 @@
 			files = (
 				09A6967A2814816500D9A937 /* WelcomeViewController.swift in Sources */,
 				09A0A2A92814F43F002A13A7 /* TopMovieTableViewCell.swift in Sources */,
-				09368B622815299B001DCEF0 /* TokenValidation.swift in Sources */,
+				09368B622815299B001DCEF0 /* TopMovie.swift in Sources */,
 				09A696762814816500D9A937 /* AppDelegate.swift in Sources */,
 				09A696782814816500D9A937 /* SceneDelegate.swift in Sources */,
 				09A0A2B02814FDC0002A13A7 /* FavoriteMoviesTableViewController.swift in Sources */,
@@ -289,6 +292,7 @@
 				09A0A2A02814D4BD002A13A7 /* LoginViewController.swift in Sources */,
 				09A0A29E2814D250002A13A7 /* Constants.swift in Sources */,
 				09A0A2AE2814FD82002A13A7 /* TopMoviesTableViewController.swift in Sources */,
+				09368B642815B3B1001DCEF0 /* DetailMovie.swift in Sources */,
 				09A0A2AC2814F745002A13A7 /* OptionsTabViewController.swift in Sources */,
 				09A0A2B22815107E002A13A7 /* TopMovieViewModel.swift in Sources */,
 				09A0A2A42814E2E9002A13A7 /* LoginViewModel.swift in Sources */,

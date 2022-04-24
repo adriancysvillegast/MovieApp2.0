@@ -10,39 +10,44 @@ import Alamofire
 
 class GetDataAPI {
   
-    
-//to get de tokenValidation
-    func getTokenValidation(){
+    //MARK: - GetTopMovies
+    func fetchData(){
         
-        let urlRequest = "\(Constants.API.Urls.urlToken)\(Constants.API.APIKey.keyValue)"
-        
-        AF.request(urlRequest, requestModifier: {
-            $0.timeoutInterval = 120
-        }).responseDecodable(of: TokenValidation.self) { response in
+        for index in 1...1{ //5
+           
+            let urlRequest = "\(Constants.API.Urls.urlTopMovies)\(index)"
             
-            guard let safeData = response.data else{
-                fatalError("Error saving tokenValidation")
-            }
             
-            do{
-                
-                let decoder = JSONDecoder()
-                let value = try decoder.decode(TokenValidation.self, from: safeData)
-                self.createSession(with: value.request_token)
-            }catch let e{
-//                aqui se muestra alerta para decir que no se pudo generar tokenValidation
-                print("\(e.localizedDescription) fallo el DO")
-            }
+                AF.request(urlRequest, requestModifier: {
+                    $0.timeoutInterval = 120
+                }).responseDecodable(of: TopMovie.self) { response in
+                    
+                    guard let safeData = response.data else{
+                        fatalError("Error saving tokenValidation")
+                    }
+                    
+                    do{
+                        let decoder = JSONDecoder()
+                        let value = try decoder.decode(TopMovie.self, from: safeData)
+                        
+                        for indexMovie in 1...19{
+                            print(value.results[indexMovie].original_title)
+                            
+                        }
+                    }catch let e{
+        //                aqui se muestra alerta para decir que no se pudo generar tokenValidation
+                        print("\(e.localizedDescription) fallo el getTopMovie")
+                    }
+                }
             
             
         }
-    }
-    
-    func createSession(with tokenValitadion: String){
-        print(tokenValitadion)
         
-//        aqui debo crear la funcion para el request de la session
+        
     }
+    //MARK: - GetDetailMovies
+
+    
     
     
 }
