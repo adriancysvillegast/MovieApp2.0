@@ -1,28 +1,26 @@
 //
-//  TabViewController.swift
+//  DetailMovieViewController.swift
 //  MovieApp 2.0
 //
-//  Created by Adriancys Jesus Villegas Toro on 23/4/22.
+//  Created by Adriancys Jesus Villegas Toro on 25/4/22.
 //
 
 import UIKit
 
-class OptionsTabViewController: UITabBarController {
+class DetailMovieViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.hidesBackButton = true
+        // Do any additional setup after loading the view.
+        register()
     }
     
-
-    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
-        
-        
-        navigationController?.popToRootViewController(animated: true)
+    func register(){
+        let viewDetail = DetailXIBViewController(nibName: Constants.Xibs.viewDetail, bundle: nil)
+        present(viewDetail, animated: true, completion: nil)
     }
-    
-    
     /*
     // MARK: - Navigation
 

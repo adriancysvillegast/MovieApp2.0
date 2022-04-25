@@ -9,9 +9,13 @@ import UIKit
 
 class TopMovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundCell: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        backgroundCell.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -6,75 +6,92 @@
 //
 
 import UIKit
+import RealmSwift
+import Alamofire
+import ChameleonFramework
 
 class TopMoviesTableViewController: UITableViewController {
+    let detailVC = DetailXIBViewController()
+//    let optionsTabViewController = OptionsTabViewController()
+    let localRealm = try! Realm()
+    private var allMovies : Results<TopMovieRealm>?
 
+    let topMovieViewModel = TopMovieViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.hidesBackButton = true
+        tableView.rowHeight = 70
+//        navigationItem.hidesBackButton = true
+        configuration()
+        load()
+        registerXib()
+    }
+    
+    func registerXib(){
+        tableView.register(UINib(nibName: Constants.Xibs.nibName, bundle: nil), forCellReuseIdentifier: Constants.Xibs.identifierCell)
+        
         
     }
-
     
-    
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    func configuration(){
+        
+        DispatchQueue.main.async {
+            self.topMovieViewModel.fetchDataTopMovie()
+        }
+        self.tableView.reloadData()
     }
+    
+    func load(){
+        allMovies = localRealm.objects(TopMovieRealm.self)
+        tableView.reloadData()
+    }
+    
+    // MARK: - Table View Data Source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return allMovies?.count ?? 1
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Xibs.identifierCell, for: indexPath) as! TopMovieTableViewCell
+        
+        
+        if let movie = allMovies?[indexPath.row]{
+            cell.titleLabel.text = movie.original_title
+            cell.backgroundCell.backgroundColor = UIColor(hexString: movie.color_Hex)
+            
+            if let backColor = UIColor(hexString: movie.color_Hex){
+                cell.titleLabel.textColor = ContrastColorOf(backColor, returnFlat: true)
+            }
+            
+        }else {
+            cell.titleLabel.text = "We have a error retriving Date from API"
+        }
+        
+        
+        
         return cell
     }
-    */
+    
+    
+    
+    
+    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    //MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+//        esto esta trabajando como quiero solo me falta agregar a favorito
+        conectToViewDetailXIB()
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func conectToViewDetailXIB(){
+        let viewDetail = DetailXIBViewController(nibName: Constants.Xibs.viewDetail, bundle: nil)
+        navigationController?.pushViewController(viewDetail, animated: true)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 
@@ -85,4 +102,15 @@ class TopMoviesTableViewController: UITableViewController {
     }
     */
 
+}
+//MARK: - SearchBar
+
+extension TopMoviesTableViewController: UISearchBarDelegate{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0{
+            load()
+            registerXib()
+        }
+    }
 }

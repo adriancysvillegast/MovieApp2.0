@@ -32,9 +32,7 @@
                             <outlet property="delegate" destination="gdm-MH-f3X" id="ORP-U4-SV4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorite" id="74M-cI-S2f">
-                        <barButtonItem key="rightBarButtonItem" title="LogOut" id="uJR-WC-dCU"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Favorite" id="74M-cI-S2f"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e7-hQ-QCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,9 +46,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="00y-lK-DYJ">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Lnq-wp-mBl" id="W2B-tR-sjf"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="dRd-fj-WjU">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="88.666666030883789" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRd-fj-WjU" id="Xl2-66-ctU">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
@@ -63,45 +69,32 @@
                             <outlet property="delegate" destination="Lnq-wp-mBl" id="73b-V0-GsU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Movies" id="JgK-7e-cXK">
-                        <barButtonItem key="rightBarButtonItem" title="LogOut" id="tlG-Tp-fDg"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Top Movies" largeTitleDisplayMode="never" id="JgK-7e-cXK"/>
                     <connections>
-                        <segue destination="xOp-lD-cqz" kind="show" identifier="goToDetails" id="EBD-TM-Xee"/>
+                        <segue destination="oxU-of-15d" kind="show" identifier="goToDetailMovie" id="NNE-j9-Ft9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hiR-Kv-LLZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5223" y="-41"/>
+            <point key="canvasLocation" x="4822" y="-760"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="iot-hs-Peg">
+        <!--Detail Movie View Controller-->
+        <scene sceneID="g0C-5d-n9y">
             <objects>
-                <tableViewController id="xOp-lD-cqz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="rj7-Fl-yuf">
+                <viewController id="oxU-of-15d" customClass="DetailMovieViewController" customModule="MovieApp_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lNj-Mi-AtT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vlA-ks-e2D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="XBw-2E-yYt">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XBw-2E-yYt" id="LE7-LM-tpz">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xOp-lD-cqz" id="ej1-Q2-r8p"/>
-                            <outlet property="delegate" destination="xOp-lD-cqz" id="RJL-50-pL4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="Eri-XX-cDF"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mO6-SR-KNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eDa-pI-uJ9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ehs-Us-gh5"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W17-Tq-Rdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6518" y="-41"/>
+            <point key="canvasLocation" x="5900" y="-761"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Nid-li-WEb">
@@ -289,7 +282,7 @@
                                             <constraint firstItem="FEj-D4-WZN" firstAttribute="leading" secondItem="F6k-rb-D52" secondAttribute="leading" constant="20" id="xua-aS-OVG"/>
                                         </constraints>
                                     </stackView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9sR-Xh-pW8">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9sR-Xh-pW8">
                                         <rect key="frame" x="145" y="311" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="826-F9-Km1"/>
@@ -318,6 +311,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6u4-Fg-Sc7"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="9sR-Xh-pW8" id="Eed-Jw-wgS"/>
                         <outlet property="continueButtonOutlet" destination="ea8-6X-AJr" id="mO7-eM-Odk"/>
                         <segue destination="jM5-lX-EAQ" kind="show" identifier="loginToTopMovies" id="YKl-1E-Meu"/>
                         <segue destination="puK-Tl-K9m" kind="show" identifier="goToRegister" id="TFz-Fh-w6a"/>
@@ -411,7 +405,13 @@
             <objects>
                 <tabBarController storyboardIdentifier="OptionsTabViewController" automaticallyAdjustsScrollViewInsets="NO" id="jM5-lX-EAQ" customClass="OptionsTabViewController" customModule="MovieApp_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bBm-ET-d7U"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="bBm-ET-d7U">
+                        <barButtonItem key="rightBarButtonItem" title="LogOut" id="42g-Fc-FlO">
+                            <connections>
+                                <action selector="logOutButtonPressed:" destination="jM5-lX-EAQ" id="8yf-6J-vwt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vxq-lG-0Yd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -466,7 +466,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aP3-wk-N0t"/>
+        <segue reference="YKl-1E-Meu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="ButtonGetStart">

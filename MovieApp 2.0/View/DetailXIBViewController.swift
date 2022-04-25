@@ -1,28 +1,21 @@
 //
-//  TabViewController.swift
+//  DetailXIBViewController.swift
 //  MovieApp 2.0
 //
-//  Created by Adriancys Jesus Villegas Toro on 23/4/22.
+//  Created by Adriancys Jesus Villegas Toro on 25/4/22.
 //
 
 import UIKit
 
-class OptionsTabViewController: UITabBarController {
+class DetailXIBViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.hidesBackButton = true
+        // Do any additional setup after loading the view.
     }
-    
 
-    @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
-        
-        
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    
+
     /*
     // MARK: - Navigation
 

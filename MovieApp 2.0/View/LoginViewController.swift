@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var continueButtonOutlet: UIButton!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Vars
     let loginViewModel = LoginViewModel()
@@ -18,11 +19,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        activityIndicator.stopAnimating()
+        buttonCorner()
     }
     
     
     func configuration(){
+        
     }
     
     //MARK: - buttonCorner
@@ -35,6 +38,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
     
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
+        activityIndicator.stopAnimating()
         
         performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
     }
