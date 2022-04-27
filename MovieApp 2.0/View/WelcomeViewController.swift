@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         getStartOutlet.layer.cornerRadius = 10
         titleTextShow()
     }
@@ -37,12 +37,6 @@ class WelcomeViewController: UIViewController {
     //MARK: - Get Start Button
     
     @IBAction func getStartButtonPressed(_ sender: UIButton) {
-        
-        
-        
-        
-        
-//        nextView
         performSegue(withIdentifier: Constants.Segues.goToLogin, sender: self)
     }
     

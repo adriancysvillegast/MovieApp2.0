@@ -12,11 +12,10 @@ struct TopMovieModel : Codable{
     
     let results : [ResultsMovie]
     
-    
     struct ResultsMovie : Codable{
+        
         let id : Int
         let original_title : String
-        
     }
     
 }

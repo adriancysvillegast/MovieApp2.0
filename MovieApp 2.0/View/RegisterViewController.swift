@@ -18,7 +18,6 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         buttonCorner()
-        
     }
     
 //MARK: - buttonCorner

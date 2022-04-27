@@ -10,7 +10,6 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var continueButtonOutlet: UIButton!
-
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Vars
@@ -19,13 +18,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator.stopAnimating()
+        configuration()
         buttonCorner()
     }
     
     
     func configuration(){
-        
+        activityIndicator.stopAnimating()
     }
     
     //MARK: - buttonCorner
@@ -37,19 +36,17 @@ class LoginViewController: UIViewController {
     //MARK: - loginButtonPressed
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-    
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
         }
-        activityIndicator.stopAnimating()
         
+        activityIndicator.stopAnimating()
         performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
     }
     
     //MARK: - RegisterButtonPressed
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        
         performSegue(withIdentifier: Constants.Segues.goToRegister, sender: self)
     }
     

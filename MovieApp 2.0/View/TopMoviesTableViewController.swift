@@ -11,106 +11,103 @@ import Alamofire
 import ChameleonFramework
 
 class TopMoviesTableViewController: UITableViewController {
-    let detailVC = DetailXIBViewController()
-//    let optionsTabViewController = OptionsTabViewController()
+    
     let localRealm = try! Realm()
-    private var allMovies : Results<TopMovieRealm>?
-
     let topMovieViewModel = TopMovieViewModel()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        topMovieViewModel.deleteTopMovie()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //edit cell
         tableView.rowHeight = 70
-//        navigationItem.hidesBackButton = true
+        
         configuration()
-        load()
+        binding()
+        
         registerXib()
     }
     
+    
     func registerXib(){
-        tableView.register(UINib(nibName: Constants.Xibs.nibName, bundle: nil), forCellReuseIdentifier: Constants.Xibs.identifierCell)
-        
-        
+        tableView.register(UINib(nibName: Constants.Xibs.nibNameTopM, bundle: nil), forCellReuseIdentifier: Constants.Xibs.identifierCell)
     }
     
     func configuration(){
-        
-        DispatchQueue.main.async {
-            self.topMovieViewModel.fetchDataTopMovie()
-        }
-        self.tableView.reloadData()
+        topMovieViewModel.fetchDataTopMovie()
     }
     
-    func load(){
-        allMovies = localRealm.objects(TopMovieRealm.self)
-        tableView.reloadData()
+    func binding(){
+        self.topMovieViewModel.refresh = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table View Data Source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return allMovies?.count ?? 1
+        if topMovieViewModel.topMovieArray.count == 0{
+            return 1
+        }else{
+        return topMovieViewModel.topMovieArray.count
+        }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Xibs.identifierCell, for: indexPath) as! TopMovieTableViewCell
-        
-        
-        if let movie = allMovies?[indexPath.row]{
-            cell.titleLabel.text = movie.original_title
-            cell.backgroundCell.backgroundColor = UIColor(hexString: movie.color_Hex)
-            
-            if let backColor = UIColor(hexString: movie.color_Hex){
-                cell.titleLabel.textColor = ContrastColorOf(backColor, returnFlat: true)
+        if topMovieViewModel.topMovieArray.count == 0{
+            cell.titleLabel.text = "We cannot get data from API, Try to connect to a Network"
+            return cell
+        }else{
+            cell.titleLabel.text = topMovieViewModel.topMovieArray[indexPath.row].originalTitle
+            let color = topMovieViewModel.topMovieArray[indexPath.row].colorHex
+            cell.backgroundCell.backgroundColor = UIColor(hexString: color)
+    
+            if let contras = UIColor(hexString: color){
+                cell.titleLabel.textColor = ContrastColorOf(contras , returnFlat: true)
             }
-            
-        }else {
-            cell.titleLabel.text = "We have a error retriving Date from API"
         }
-        
-        
-        
         return cell
     }
     
-    
-    
-    
-    
-
     //MARK: - Table View Delegate
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-//        esto esta trabajando como quiero solo me falta agregar a favorito
-        conectToViewDetailXIB()
-    }
-
-    func conectToViewDetailXIB(){
-        let viewDetail = DetailXIBViewController(nibName: Constants.Xibs.viewDetail, bundle: nil)
-        navigationController?.pushViewController(viewDetail, animated: true)
+        
+        topMovieViewModel.createObject(with: topMovieViewModel.topMovieArray[indexPath.row])
+        performSegue(withIdentifier: Constants.Segues.goToDetails, sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
-//MARK: - SearchBar
-
+//MARK: - SearchBar Delegate
 extension TopMoviesTableViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count == 0{
-            load()
-            registerXib()
+        if searchBar.text?.count == 0{
+            configuration()
+            binding()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
         }
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        topMovieViewModel.searchTitle(searchBar: searchBar.text)
+        binding()
+    }
+}
+
+//MARK: - TopMovieViewModelDelegate
+extension TopMoviesTableViewController: TopMovieViewModelDelegate{
+    
+    func presentError(alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
     }
 }
