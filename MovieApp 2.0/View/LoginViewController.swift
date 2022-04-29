@@ -11,6 +11,10 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var continueButtonOutlet: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
+    
+    
     
     //MARK: - Vars
     let loginViewModel = LoginViewModel()
@@ -36,11 +40,6 @@ class LoginViewController: UIViewController {
     //MARK: - loginButtonPressed
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-        }
-        
-        activityIndicator.stopAnimating()
         performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
     }
     
@@ -49,5 +48,17 @@ class LoginViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: Constants.Segues.goToRegister, sender: self)
     }
+    
+}
+//MARK: - LoginViewModelDelegate
+extension LoginViewController: LoginViewModelDelegate{
+    func nextView() {
+        performSegue(withIdentifier: Constants.Segues.loginToTopMovies, sender: self)
+    }
+    
+    func presentError(alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
+    
     
 }

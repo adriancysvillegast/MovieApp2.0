@@ -10,7 +10,10 @@ import UIKit
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var continueButtonOutlet: UIButton!
-    //MARK: - Vars
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
     
     let registerViewModel = RegisterViewModel()
     
@@ -29,12 +32,21 @@ class RegisterViewController: UIViewController {
     //MARK: - RegisterButtonPressed
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        
-//        registerMethod firebase
-        
+        performSegue(withIdentifier: Constants.Segues.registerToTopMovies, sender: self)
+    }
+
+}
+//MARK: - RegisterViewModelDelegate
+
+extension RegisterViewController: RegisterViewModelDelegate{
+    func nextView() {
+        performSegue(withIdentifier: Constants.Segues.registerToTopMovies, sender: self)
+    }
+    
+    func presentError(alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
     }
     
     
-
-
 }
+

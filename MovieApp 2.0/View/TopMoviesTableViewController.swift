@@ -49,19 +49,14 @@ class TopMoviesTableViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if topMovieViewModel.topMovieArray.count == 0{
-            return 1
-        }else{
+        
         return topMovieViewModel.topMovieArray.count
-        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Xibs.identifierCell, for: indexPath) as! TopMovieTableViewCell
-        if topMovieViewModel.topMovieArray.count == 0{
-            cell.titleLabel.text = "We cannot get data from API, Try to connect to a Network"
-            return cell
-        }else{
+        
             cell.titleLabel.text = topMovieViewModel.topMovieArray[indexPath.row].originalTitle
             let color = topMovieViewModel.topMovieArray[indexPath.row].colorHex
             cell.backgroundCell.backgroundColor = UIColor(hexString: color)
@@ -69,7 +64,6 @@ class TopMoviesTableViewController: UITableViewController {
             if let contras = UIColor(hexString: color){
                 cell.titleLabel.textColor = ContrastColorOf(contras , returnFlat: true)
             }
-        }
         return cell
     }
     

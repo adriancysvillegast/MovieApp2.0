@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="00y-lK-DYJ">
-                            <rect key="frame" x="0.0" y="0.0" width="442" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -176,11 +176,20 @@
                                             <constraint firstItem="qve-me-Hec" firstAttribute="leading" secondItem="jzB-5f-ksI" secondAttribute="leading" id="Yy8-e9-poT"/>
                                         </constraints>
                                     </stackView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7HY-dE-QfP">
+                                        <rect key="frame" x="164" y="352" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="rgx-vb-PE2"/>
+                                            <constraint firstAttribute="width" constant="100" id="ul5-x0-otu"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jzB-5f-ksI" secondAttribute="trailing" id="Qgo-Fr-3lo"/>
+                                    <constraint firstItem="7HY-dE-QfP" firstAttribute="centerX" secondItem="bYK-ao-kg4" secondAttribute="centerX" id="WkR-v4-hoa"/>
                                     <constraint firstItem="jzB-5f-ksI" firstAttribute="centerY" secondItem="bYK-ao-kg4" secondAttribute="centerY" id="ZeY-ZE-hiz"/>
                                     <constraint firstItem="jzB-5f-ksI" firstAttribute="leading" secondItem="bYK-ao-kg4" secondAttribute="leading" id="dit-c3-UCs"/>
+                                    <constraint firstItem="7HY-dE-QfP" firstAttribute="centerY" secondItem="bYK-ao-kg4" secondAttribute="centerY" id="rFM-87-XvS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -195,7 +204,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nua-qI-UBC"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="7HY-dE-QfP" id="SgR-Eh-h6P"/>
                         <outlet property="continueButtonOutlet" destination="HQB-sd-agA" id="bvq-v6-KVU"/>
+                        <outlet property="emailText" destination="Yv0-y2-A1e" id="ohn-SS-jYt"/>
+                        <outlet property="passwordText" destination="DpH-Q3-BWl" id="G6l-3v-g6N"/>
                         <segue destination="jM5-lX-EAQ" kind="show" identifier="registerToTopMovies" id="aP3-wk-N0t"/>
                     </connections>
                 </viewController>
@@ -324,6 +336,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="9sR-Xh-pW8" id="Eed-Jw-wgS"/>
                         <outlet property="continueButtonOutlet" destination="ea8-6X-AJr" id="mO7-eM-Odk"/>
+                        <outlet property="emailText" destination="7B0-tW-Tta" id="FaL-BS-zvJ"/>
+                        <outlet property="passwordText" destination="6nF-jG-BoN" id="urf-sR-KOz"/>
                         <segue destination="jM5-lX-EAQ" kind="show" identifier="loginToTopMovies" id="YKl-1E-Meu"/>
                         <segue destination="puK-Tl-K9m" kind="show" identifier="goToRegister" id="TFz-Fh-w6a"/>
                     </connections>

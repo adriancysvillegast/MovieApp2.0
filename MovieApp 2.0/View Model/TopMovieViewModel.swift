@@ -31,7 +31,7 @@ class TopMovieViewModel{
         //        clean array
         topMovieArray = []
         
-        for index in 1...1{ //5
+        for index in 1...5{ //5
             
             let urlRequest = "\(Constants.API.Urls.urlTopMovies)\(index)"
             
