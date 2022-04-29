@@ -5,6 +5,8 @@ es importante destacar que actualmente estoy leyendo una guia de Ray Wenderlich 
 la inyeccion de dependencias algo que actualmente no manejo por lo tanto es muy probable que el codigo vuleva tener algunos cambios
 en las siguiente semanas.
 
+aun no me manejo muchos con los xibs pero en las proximas semanas podria realizar todo con xibs y evitar los storiboards 
+en este punto me gustaria recibir las recomendaciones pertinentes en cuanto a codigo y seria bueno que me encionaran los temas en los cuales estoy fallando para poder dedicarle tiempo a ello, cabe destacar que hice un curso de desarrollo hace solo unos meses (3 meses cumplo el mes de mayo) y quisiera indagar mas en este mundo del desarrollo de apps.
 
 al momento de iniciar seccion en la app solo haga click en el boton de continuar.
 
