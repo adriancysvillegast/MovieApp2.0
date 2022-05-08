@@ -86,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09131FC52821859100C31E7A /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		09368B6528161BDB001DCEF0 /* DataRealm */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +162,7 @@
 		09A696892814818300D9A937 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09131FC52821859100C31E7A /* Xibs */,
 				09A0A2AF2814FDC0002A13A7 /* FavoriteMoviesTableViewController.swift */,
 				09A56F56281881F8009FD4AE /* DetailMovieTableViewCell.swift */,
 				09A56F57281881F8009FD4AE /* DetailMovieTableViewCell.xib */,

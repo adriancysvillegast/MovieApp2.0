@@ -15,7 +15,6 @@ protocol TopMovieViewModelDelegate{
 }
 
 class TopMovieViewModel{
-    
     let localRealm = try! Realm()
     let alerts = ShowAlertsViewController()
     var delegate : TopMovieViewModelDelegate?
@@ -79,7 +78,6 @@ class TopMovieViewModel{
     
     //MARK: - Search Bar Methods
     func searchTitle(searchBar: String?){
-        
         var values : [MovieModel] = []
         if let words = searchBar{
             let result = topMovieArray.filter { $0.originalTitle.contains(words) }
@@ -105,7 +103,6 @@ class TopMovieViewModel{
     }
     
     func saveItemTapped(movieTapped: ItemSelected){
-        
         do{
             try localRealm.write({
                 localRealm.add(movieTapped)
@@ -116,7 +113,6 @@ class TopMovieViewModel{
     }
     
     func createObject(with value: MovieModel?){
-        
         let movie = ItemSelected()
         if let tappedMovie = value{
             movie.id = tappedMovie.id

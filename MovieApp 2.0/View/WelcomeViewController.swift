@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var getStartOutlet: UIButton!
@@ -18,6 +19,7 @@ class WelcomeViewController: UIViewController {
         getStartOutlet.layer.cornerRadius = 10
         titleTextShow()
     }
+
 
 //MARK: - titleTextShow
     func titleTextShow(){
