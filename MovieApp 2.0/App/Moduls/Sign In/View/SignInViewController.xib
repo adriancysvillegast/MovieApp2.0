@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="MovieApp_2_0" customModuleProvider="target">
             <connections>
                 <outlet property="continueButtonOutlet" destination="Ewd-eZ-vtq" id="MVw-zF-oHM"/>
+                <outlet property="email" destination="a9e-pe-fP7" id="V79-1b-g1F"/>
+                <outlet property="password" destination="iDf-TA-c8L" id="U39-9k-AdG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,6 +30,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
+                        <action selector="emailText:" destination="-1" eventType="editingChanged" id="mN5-MZ-NDc"/>
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="N1x-eZ-aGD"/>
                     </connections>
                 </textField>
@@ -40,6 +43,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
+                        <action selector="passwordText:" destination="-1" eventType="editingChanged" id="Phe-RN-oPB"/>
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="Cqg-mA-HIT"/>
                     </connections>
                 </textField>
