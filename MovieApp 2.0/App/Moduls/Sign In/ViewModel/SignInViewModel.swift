@@ -6,20 +6,25 @@
 //
 
 import Foundation
+protocol SignInDelegate: AnyObject{
+    func showError(message: String)
+    func activateButton()
+}
 
 class SignInViewModel{
     
     private var emailValidation : Bool = false
     private var passwordValidation : Bool = false
-    private var delegate : SignInDelegate?
+    weak var delegate : SignInDelegate?
     
-    init(delegate: SignInDelegate){
-        self.delegate = delegate
-    }
     func buttonActivate(){
         if emailValidation && passwordValidation{
             self.delegate?.activateButton()
         }
+    }
+    
+    func loginFirebase(email: String, password: String){
+//        firebase code
     }
     
     func validateEmail(value: String?){
@@ -43,7 +48,7 @@ class SignInViewModel{
         }
     }
     
-    func validatePasswordA(value: String?){
+    func validatePassword(value: String?){
         if let passwordValue = value{
             if passwordValue.count < 6{
                 passwordValidation = false
@@ -77,5 +82,4 @@ class SignInViewModel{
         let predicate = NSPredicate(format: "SELF MATCHES %@",regularExpresion)
         return predicate.evaluate(with: value)
     }
-
 }

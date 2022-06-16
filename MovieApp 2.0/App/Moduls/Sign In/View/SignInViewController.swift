@@ -7,22 +7,21 @@
 
 import UIKit
 
-protocol SignInDelegate{
-    func showError(message: String)
-    func activateButton()
-}
-
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var continueButtonOutlet: UIButton!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    private var viewModel : SignInViewModel?
+    lazy var viewModel : SignInViewModel = {
+       let viewModel = SignInViewModel()
+        viewModel.delegate = self
+        return viewModel
+    }()
+    
     override func viewDidLoad() {
+        title = "Sign In"
         super.viewDidLoad()
-
-        viewModel = SignInViewModel(delegate: self)
         setupView()
     }
 
@@ -30,33 +29,33 @@ class SignInViewController: UIViewController {
         continueButtonOutlet.layer.cornerRadius = 15
         continueButtonOutlet.isEnabled = true
         continueButtonOutlet.backgroundColor = .gray
+        email.layer.borderColor = UIColor.black.cgColor
+        password.layer.borderColor = UIColor.black.cgColor
+        email.layer.borderWidth = 0.5
+        password.layer.borderWidth = 0.5
     }
     
     @IBAction func emailText(_ sender: UITextField) {
-        viewModel?.validateEmail(value: email.text)
+        viewModel.validateEmail(value: email.text)
     }
     
     @IBAction func passwordText(_ sender: UITextField) {
-        viewModel?.validatePasswordA(value: password.text)
+        viewModel.validatePassword(value: password.text)
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //MARK: - ContinueButtonTapped
     @IBAction func continueButtonTapped(_ sender: UIButton) {
         
     }
-}
-//MARK: - TextField delegate
-extension SignInViewController: UITextFieldDelegate{
-    
-    
-    
-}
-//MARK: - SignUpButton
-extension SignInViewController{
-    
+    //MARK: - SignUpButtonTapped
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        
+        let signUpViewController = SignupViewController()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
+    
 }
 //MARK: - SignInDelegate
 extension SignInViewController: SignInDelegate{
