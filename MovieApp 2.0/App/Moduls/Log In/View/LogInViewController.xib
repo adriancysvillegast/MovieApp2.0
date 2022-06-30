@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="MovieApp_2_0" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="MovieApp_2_0" customModuleProvider="target">
             <connections>
                 <outlet property="continueButtonOutlet" destination="Ewd-eZ-vtq" id="MVw-zF-oHM"/>
                 <outlet property="email" destination="a9e-pe-fP7" id="V79-1b-g1F"/>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="TfG-De-I9D">
-                    <rect key="frame" x="0.0" y="94" width="414" height="210"/>
+                    <rect key="frame" x="0.0" y="343" width="414" height="210"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OD7-ST-mbQ">
                             <rect key="frame" x="20" y="0.0" width="374" height="116"/>
@@ -44,7 +45,7 @@
                                         <constraint firstAttribute="height" constant="50" id="AJO-dY-rXv"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="passwordText:" destination="-1" eventType="editingChanged" id="Phe-RN-oPB"/>
                                         <outlet property="delegate" destination="i5M-Pr-FkT" id="Cqg-mA-HIT"/>
@@ -93,8 +94,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="TfG-De-I9D" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OaY-pO-Gn5"/>
+                <constraint firstItem="TfG-De-I9D" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Qsp-cC-ZnU"/>
                 <constraint firstItem="TfG-De-I9D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bRL-ka-deh"/>
-                <constraint firstItem="TfG-De-I9D" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="ubQ-kg-Z1p"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TfG-De-I9D" secondAttribute="trailing" id="um6-wc-UG4"/>
             </constraints>
             <point key="canvasLocation" x="134.78260869565219" y="93.75"/>

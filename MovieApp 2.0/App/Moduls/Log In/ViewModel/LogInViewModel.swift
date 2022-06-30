@@ -1,21 +1,21 @@
 //
-//  SignInViewModel.swift
+//  LogInViewModel.swift
 //  MovieApp 2.0
 //
 //  Created by Adriancys Jesus Villegas Toro on 30/5/22.
 //
 
 import Foundation
-protocol SignInDelegate: AnyObject{
+protocol LogInDelegate: AnyObject{
     func showError(message: String)
     func activateButton()
 }
 
-class SignInViewModel{
+class LogInViewModel{
     
     private var emailValidation : Bool = false
     private var passwordValidation : Bool = false
-    weak var delegate : SignInDelegate?
+    weak var delegate : LogInDelegate?
     
     func buttonActivate(){
         if emailValidation && passwordValidation{

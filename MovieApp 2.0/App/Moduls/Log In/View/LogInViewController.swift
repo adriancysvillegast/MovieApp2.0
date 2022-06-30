@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  LogInViewController.swift
 //  MovieApp 2.0
 //
 //  Created by Adriancys Jesus Villegas Toro on 30/5/22.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, UITextFieldDelegate{
+class LogInViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var continueButtonOutlet: UIButton!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    lazy var viewModel : SignInViewModel = {
-       let viewModel = SignInViewModel()
+    lazy var viewModel : LogInViewModel = {
+       let viewModel = LogInViewModel()
         viewModel.delegate = self
         return viewModel
     }()
@@ -57,8 +57,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate{
     }
     
 }
-//MARK: - SignInDelegate
-extension SignInViewController: SignInDelegate{
+//MARK: - LogInDelegate
+extension LogInViewController: LogInDelegate{
     func showError(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
