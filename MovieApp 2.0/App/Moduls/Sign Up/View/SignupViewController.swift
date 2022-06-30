@@ -11,6 +11,11 @@ class SignupViewController: UIViewController{
     
     //MARK: - Properties
 
+    private lazy var viewModel: SignupViewModel = {
+        let viewModel = SignupViewModel()
+        viewModel.delegate = self
+        return viewModel
+    }()
     lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
     
 //    Views
@@ -158,10 +163,34 @@ class SignupViewController: UIViewController{
     
 }
 
-extension SignupViewController: ValidateDataDelegate{
-    func userNameShort() {
-        <#code#>
+//MARK: - ValidateDataDelegate, SignupViewModelDelegate
+extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
+    //    SignupViewModelDelegate
+    func showLabel() {
+//        create a label and write the password is not the same
     }
+    
+    func hideLabel() {
+//        hide the label
+    }
+    
+    func activateButton() {
+        buttonRegister.isHidden = false
+        //add color green
+    }
+    
+    func hideButton() {
+        buttonRegister.isHidden = true
+        //add color gray
+    }
+//    ValidateDataDelegate
+    func errorValidation(message: String) {
+        let alert = UIAlertController(title: Constants.ValidationMessages.titleModal, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(alert, animated: true)
+    }
+    
+
     
     
 }

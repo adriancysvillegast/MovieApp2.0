@@ -13,7 +13,10 @@ struct Constants{
         static let titleName = "Movies App"
     }
     struct ValidationMessages{
+        static let titleModal = " Error!"
         static let nameShort = "Please add a name with more than six character"
+        static let emailError = "Please add an email addres, just like this example@gmail.com"
+        static let passwordError = "Ey! type a password with more than six charater and uses numbers, lowercase and uppercase letters"
     }
     
     struct API{
