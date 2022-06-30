@@ -78,7 +78,7 @@ class SignupViewController: UIViewController{
         text.layer.borderWidth = 0.5
         text.isSecureTextEntry = true
         text.textContentType = .newPassword
-        text.placeholder = "Add your password"
+        text.placeholder = "Add your password again"
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -101,6 +101,16 @@ class SignupViewController: UIViewController{
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    //Label to error password
+    private let errorPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.tintColor = .black
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.text = "This password is not the same!"
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     
     //MARK: - LifeCycle
@@ -117,7 +127,7 @@ class SignupViewController: UIViewController{
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         
-        [usernameTextField, emailTextField, passwordTextField, passwordConfTextField, buttonRegister, alreadyHaveAccount].forEach {
+        [usernameTextField, emailTextField, passwordTextField, passwordConfTextField,errorPasswordLabel, buttonRegister, alreadyHaveAccount].forEach {
             containerView.addSubview($0)
         }
     }
@@ -143,8 +153,11 @@ class SignupViewController: UIViewController{
             passwordConfTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
             passwordConfTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             passwordConfTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+
+            errorPasswordLabel.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 5),
+            errorPasswordLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             
-            buttonRegister.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 30),
+            buttonRegister.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 40),
             buttonRegister.heightAnchor.constraint(equalToConstant: 50),
             buttonRegister.widthAnchor.constraint(equalToConstant: 180),
             buttonRegister.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
@@ -156,32 +169,66 @@ class SignupViewController: UIViewController{
     }
     //MARK: - Target
     private func addTarged(){
+        usernameTextField.addTarget(self, action: #selector(validateName), for: UIControl.Event.editingDidEnd)
+        
+        emailTextField.addTarget(self, action: #selector(validateEmail), for: UIControl.Event.editingDidEnd)
+        
+        passwordTextField.addTarget(self, action: #selector(validatePassword), for: UIControl.Event.editingDidEnd)
+        
+        usernameTextField.addTarget(self, action: #selector(confirmationPassword), for: UIControl.Event.editingChanged)
+        
+        buttonRegister.addTarget(self, action: #selector(registerUser), for: UIControl.Event.touchUpInside)
         
     }
     
+    @objc private func validateName(){
+        viewModel.validateName(name: usernameTextField.text)
+    }
     
+    @objc private func validateEmail(){
+        viewModel.validateEmail(email: emailTextField.text)
+    }
     
+    @objc private func validatePassword(){
+        viewModel.validatePassword(password: passwordTextField.text)
+    }
+    
+    @objc private func confirmationPassword(){
+        viewModel.confirmationPassword(passwordA: passwordTextField.text, passwordB: passwordConfTextField.text)
+    }
+    
+    @objc private func registerUser(){
+//        create spinner on button here
+        DispatchQueue.main.async {
+            self.viewModel.register(email: self.emailTextField.text!, password: self.passwordTextField.text!)
+        }
+    }
+    
+    //MARK: - Button Spinner
+    private func buttonSpinner(){
+        
+    }
 }
 
 //MARK: - ValidateDataDelegate, SignupViewModelDelegate
 extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
     //    SignupViewModelDelegate
     func showLabel() {
-//        create a label and write the password is not the same
+        errorPasswordLabel.isHidden = false
     }
     
     func hideLabel() {
-//        hide the label
+        errorPasswordLabel.isEnabled = true
     }
     
     func activateButton() {
         buttonRegister.isHidden = false
-        //add color green
+        buttonRegister.backgroundColor = UIColor.systemGreen
     }
     
     func hideButton() {
         buttonRegister.isHidden = true
-        //add color gray
+        buttonRegister.backgroundColor = UIColor.systemGray
     }
 //    ValidateDataDelegate
     func errorValidation(message: String) {
