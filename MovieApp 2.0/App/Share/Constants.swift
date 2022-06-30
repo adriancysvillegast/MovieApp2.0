@@ -12,6 +12,9 @@ struct Constants{
     struct Title{
         static let titleName = "Movies App"
     }
+    struct ValidationMessages{
+        static let nameShort = "Please add a name with more than six character"
+    }
     
     struct API{
         

@@ -157,3 +157,11 @@ class SignupViewController: UIViewController{
     
     
 }
+
+extension SignupViewController: ValidateDataDelegate{
+    func userNameShort() {
+        <#code#>
+    }
+    
+    
+}
