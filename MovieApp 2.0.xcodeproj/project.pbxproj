@@ -14,7 +14,6 @@
 		098ACF91284528760057CEF4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACF90284528760057CEF4 /* Movie.swift */; };
 		098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACF932845293F0057CEF4 /* CallAPI.swift */; };
 		098ACF9F28452B3C0057CEF4 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACF9D28452B3C0057CEF4 /* LogInViewController.swift */; };
-		098ACFA028452B3C0057CEF4 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 098ACF9E28452B3C0057CEF4 /* LogInViewController.xib */; };
 		098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACFA328454A860057CEF4 /* LogInViewModel.swift */; };
 		098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B2B03286D3FB6000478A9 /* SignupViewModel.swift */; };
 		098B2B06286D4401000478A9 /* ValidationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B2B05286D4401000478A9 /* ValidationsData.swift */; };
@@ -37,7 +36,6 @@
 		098ACF90284528760057CEF4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		098ACF932845293F0057CEF4 /* CallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallAPI.swift; sourceTree = "<group>"; };
 		098ACF9D28452B3C0057CEF4 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		098ACF9E28452B3C0057CEF4 /* LogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
 		098ACFA328454A860057CEF4 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		098B2B03286D3FB6000478A9 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		098B2B05286D4401000478A9 /* ValidationsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationsData.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				098ACF9D28452B3C0057CEF4 /* LogInViewController.swift */,
-				098ACF9E28452B3C0057CEF4 /* LogInViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098ACFA028452B3C0057CEF4 /* LogInViewController.xib in Resources */,
 				09A696822814816A00D9A937 /* LaunchScreen.storyboard in Resources */,
 				09A6967F2814816A00D9A937 /* Assets.xcassets in Resources */,
 				095EDE41281B7B3C00EED2B6 /* GoogleService-Info.plist in Resources */,
