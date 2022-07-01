@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TransitionButton
 
 class SignupViewController: UIViewController{
     
@@ -83,12 +84,14 @@ class SignupViewController: UIViewController{
         return text
     }()
 //    Bottons
-    private var buttonRegister: UIButton = {
-        let button = UIButton()
+    private var buttonRegister: TransitionButton = {
+        let button = TransitionButton(frame: CGRect(x: 0, y: 0, width: 180, height: 50))
         button.backgroundColor = UIColor.systemGreen
         button.setTitle("Continue", for: .normal)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+//        button.isEnabled = false
+        button.backgroundColor = .gray
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -120,6 +123,8 @@ class SignupViewController: UIViewController{
         view.backgroundColor = .white
         setupView()
         setupConstraints()
+        addTarged()
+        //debo revisar el bottonque no quiere dar giros y tampoco quiere imprimi
     }
     
     //MARK: - SetupView
@@ -169,50 +174,51 @@ class SignupViewController: UIViewController{
     }
     //MARK: - Target
     private func addTarged(){
-        usernameTextField.addTarget(self, action: #selector(validateName), for: UIControl.Event.editingDidEnd)
+        usernameTextField.addTarget(self, action: #selector(self.validateName), for: UIControl.Event.editingDidEnd)
         
-        emailTextField.addTarget(self, action: #selector(validateEmail), for: UIControl.Event.editingDidEnd)
+        emailTextField.addTarget(self, action: #selector(self.validateEmail), for: UIControl.Event.editingDidEnd)
         
-        passwordTextField.addTarget(self, action: #selector(validatePassword), for: UIControl.Event.editingDidEnd)
+        passwordTextField.addTarget(self, action: #selector(self.validatePassword), for: UIControl.Event.editingDidEnd)
         
-        usernameTextField.addTarget(self, action: #selector(confirmationPassword), for: UIControl.Event.editingChanged)
+        usernameTextField.addTarget(self, action: #selector(self.confirmationPassword), for: UIControl.Event.editingChanged)
         
-        buttonRegister.addTarget(self, action: #selector(registerUser), for: UIControl.Event.touchUpInside)
-        
+        buttonRegister.addTarget(self, action: #selector(self.registerUser), for: .touchUpInside)
     }
     
-    @objc private func validateName(){
+    @objc func validateName(){
         viewModel.validateName(name: usernameTextField.text)
     }
     
-    @objc private func validateEmail(){
+    @objc func validateEmail(){
         viewModel.validateEmail(email: emailTextField.text)
     }
     
-    @objc private func validatePassword(){
+    @objc func validatePassword(){
         viewModel.validatePassword(password: passwordTextField.text)
     }
     
-    @objc private func confirmationPassword(){
+    @objc func confirmationPassword(){
         viewModel.confirmationPassword(passwordA: passwordTextField.text, passwordB: passwordConfTextField.text)
     }
     
-    @objc private func registerUser(){
-//        create spinner on button here
-        DispatchQueue.main.async {
-            self.viewModel.register(email: self.emailTextField.text!, password: self.passwordTextField.text!)
-        }
+    @objc func registerUser(){
+        self.viewModel.register(email: self.emailTextField.text!, password: self.passwordTextField.text!)
     }
     
-    //MARK: - Button Spinner
-    private func buttonSpinner(){
-        
-    }
+
 }
 
 //MARK: - ValidateDataDelegate, SignupViewModelDelegate
 extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
     //    SignupViewModelDelegate
+    func startAnimationButton() {
+        buttonRegister.startAnimation()
+    }
+    
+    func stopAnimationButton() {
+        buttonRegister.stopAnimation()
+    }
+    
     func showLabel() {
         errorPasswordLabel.isHidden = false
     }
@@ -222,12 +228,12 @@ extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
     }
     
     func activateButton() {
-        buttonRegister.isHidden = false
+        buttonRegister.isEnabled = true
         buttonRegister.backgroundColor = UIColor.systemGreen
     }
     
     func hideButton() {
-        buttonRegister.isHidden = true
+        buttonRegister.isEnabled = false
         buttonRegister.backgroundColor = UIColor.systemGray
     }
 //    ValidateDataDelegate

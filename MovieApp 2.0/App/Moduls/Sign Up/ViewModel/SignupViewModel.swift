@@ -12,6 +12,9 @@ protocol SignupViewModelDelegate: AnyObject{
     func hideButton()
     func showLabel()
     func hideLabel()
+    func startAnimationButton()
+    func stopAnimationButton()
+    
 }
 
 class SignupViewModel{
@@ -26,13 +29,14 @@ class SignupViewModel{
     
     //MARK: - Register
     func register(email: String, password: String){
-        
+        self.delegate?.startAnimationButton()
+//        registrar en api y en alamofire
     }
     
     //MARK: - LookData
     
     private func lookData(){
-        if usernameValidation && emailValidation && passwordValidation {
+        if usernameValidation && emailValidation && passwordValidation && samePasswordValidation {
             self.delegate?.activateButton()
         }else{
             self.delegate?.hideButton()
