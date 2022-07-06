@@ -14,6 +14,7 @@ protocol SignupViewModelDelegate: AnyObject{
     func hideLabel()
     func startAnimationButton()
     func stopAnimationButton()
+    func showInfo(message: String)
     
 }
 
@@ -26,7 +27,6 @@ class SignupViewModel{
     private var passwordValidation: Bool = false
     private var samePasswordValidation: Bool = false
     weak var delegate: SignupViewModelDelegate?
-    
     //MARK: - Register
     func register(email: String, password: String){
         self.delegate?.startAnimationButton()
@@ -49,8 +49,16 @@ class SignupViewModel{
             return
         }
         
-        if validateData.validateName(with: name){
-            usernameValidation = true
+        if !validateData.validateNameCount(with: name){
+            usernameValidation = false
+            self.delegate?.showInfo(message: Constants.ValidationMessages.nameShort)
+        }else{
+            if !validateData.validateCharacterName(name: name){
+                usernameValidation = false
+                self.delegate?.showInfo(message: Constants.ValidationMessages.nameWithNumbers)
+            }else{
+                usernameValidation = true
+            }
         }
         lookData()
     }
@@ -60,7 +68,10 @@ class SignupViewModel{
             return
         }
         
-        if validateData.validationEmail(with: email){
+        if !validateData.validationEmail(with: email){
+            emailValidation = false
+            self.delegate?.showInfo(message: Constants.ValidationMessages.emailError)
+        }else{
             emailValidation = true
         }
         lookData()
@@ -71,8 +82,16 @@ class SignupViewModel{
             return
         }
 
-        if validateData.validatePassword(with: password){
-            passwordValidation = true
+        if !validateData.validatePasswordCount(with: password){
+            passwordValidation = false
+            self.delegate?.showInfo(message: Constants.ValidationMessages.passwordError)
+        }else{
+            if !validateData.validatePassword(with: password){
+                passwordValidation = false
+                self.delegate?.showInfo(message: Constants.ValidationMessages.passwordError)
+            }else{
+                passwordValidation = true
+            }
         }
         lookData()
     }
@@ -82,8 +101,12 @@ class SignupViewModel{
             return
         }
         
-        if validateData.confirmatePasswords(passwordA: passwordA, passwordB: passwordB){
+        if !validateData.confirmatePasswords(passwordA: passwordA, passwordB: passwordB){
+            samePasswordValidation = false
+            self.delegate?.showLabel()
+        }else{
             samePasswordValidation = true
+            self.delegate?.hideLabel()
         }
         lookData()
     }

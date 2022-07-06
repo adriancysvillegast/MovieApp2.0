@@ -7,79 +7,73 @@
 
 import Foundation
 protocol LogInDelegate: AnyObject{
-    func showError(message: String)
+    func showInfo(message: String)
     func activateButton()
+    func desactivateButton()
+    func startSpinner()
+    func stopSpinner()
 }
 
 class LogInViewModel{
+    //MARK: - Properties
     
-    private var emailValidation : Bool = false
-    private var passwordValidation : Bool = false
-    weak var delegate : LogInDelegate?
+    let validationData = ValidationsData()
+    weak var delegate: LogInDelegate?
+    private var emailValidation: Bool = false
+    private var passwordValidation: Bool = false
+    
+    
+    //MARK: - LogIn
+    
+    func logIn(email: String, password: String){
+        self.delegate?.startSpinner()
+        
+//        usar keychain para salvar el token
+    }
+    
+    //MARK: - Button Activate
     
     func buttonActivate(){
         if emailValidation && passwordValidation{
             self.delegate?.activateButton()
+        }else {
+            self.delegate?.desactivateButton()
         }
     }
     
-    func loginFirebase(email: String, password: String){
-//        firebase code
-    }
     
-    func validateEmail(value: String?){
-        if let emailValue = value{
-            let regularExpresion = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let predicate = NSPredicate(format: "SELF MATCHES %@",regularExpresion)
-            if !predicate.evaluate(with: emailValue){
-                validateEmailCount(value: emailValue)
-                emailValidation = false
-            } else{
-                emailValidation = true
-            }
+    //MARK: - Validations
+    
+    func validateEmail(with email: String?){
+        guard let email = email else {
+            return
+        }
+        
+        if !validationData.validationEmail(with: email){
+            emailValidation = false
+            self.delegate?.showInfo(message: Constants.ValidationMessages.emailError)
+        }else{
+            emailValidation = true
         }
         buttonActivate()
     }
-
-    func validateEmailCount(value: String){
-        if value.count > 30{
-            let message = "Please type an email address. example@gmail.com"
-            self.delegate?.showError(message: message)
-        }
-    }
     
-    func validatePassword(value: String?){
-        if let passwordValue = value{
-            if passwordValue.count < 6{
-                passwordValidation = false
+    func validatePassword(with password: String?){
+        guard let password = password else {
+            return
+        }
+        
+        if validationData.validatePassword(with: password){
+            if validationData.validatePasswordCount(with: password){
+                passwordValidation = true
             }else{
-                if contentDigit(value: passwordValue) &&
-                    contentLowerCase(value: passwordValue) &&
-                    contentUpperCase(value: passwordValue) {
-                    passwordValidation = true
-                }else{
-                    passwordValidation = false
-                }
+                passwordValidation = false
             }
+        }else{
+            passwordValidation = false
         }
         buttonActivate()
     }
     
-    func contentDigit(value: String) -> Bool{
-        let regularExpresion = ".*[0-9]+.*"
-        let predicate = NSPredicate(format: "SELF MATCHES %@",regularExpresion)
-        return predicate.evaluate(with: value)
-    }
-
-    func contentLowerCase(value: String) -> Bool{
-        let regularExpresion = ".*[a-z]+.*"
-        let predicate = NSPredicate(format: "SELF MATCHES %@",regularExpresion)
-        return predicate.evaluate(with: value)
-    }
-
-    func contentUpperCase(value: String) -> Bool{
-        let regularExpresion = ".*[A-Z]+.*"
-        let predicate = NSPredicate(format: "SELF MATCHES %@",regularExpresion)
-        return predicate.evaluate(with: value)
-    }
+    
 }

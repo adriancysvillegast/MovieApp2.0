@@ -17,8 +17,8 @@ class SignupViewController: UIViewController{
         viewModel.delegate = self
         return viewModel
     }()
-    lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
     
+    lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
 //    Views
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -28,6 +28,7 @@ class SignupViewController: UIViewController{
         scroll.autoresizingMask = .flexibleWidth
         scroll.backgroundColor = .white
         scroll.showsHorizontalScrollIndicator = true
+        scroll.showsVerticalScrollIndicator = true
         return scroll
     }()
     
@@ -39,7 +40,10 @@ class SignupViewController: UIViewController{
     }()
 //    TextFields
     private var usernameTextField:  UITextField = {
+        let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
+        text.leftView = spacer
+        text.leftViewMode = .always
         text.layer.borderColor = UIColor.gray.cgColor
         text.layer.cornerRadius = 10
         text.layer.borderWidth = 0.5
@@ -50,7 +54,10 @@ class SignupViewController: UIViewController{
     }()
 
     private var emailTextField:  UITextField = {
+        let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
+        text.leftView = spacer
+        text.leftViewMode = .always
         text.layer.borderColor = UIColor.gray.cgColor
         text.layer.cornerRadius = 10
         text.layer.borderWidth = 0.5
@@ -61,7 +68,10 @@ class SignupViewController: UIViewController{
     }()
     
     private var passwordTextField:  UITextField = {
+        let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
+        text.leftView = spacer
+        text.leftViewMode = .always
         text.layer.borderColor = UIColor.gray.cgColor
         text.layer.cornerRadius = 10
         text.layer.borderWidth = 0.5
@@ -73,7 +83,10 @@ class SignupViewController: UIViewController{
     }()
     
     private var passwordConfTextField:  UITextField = {
+        let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
+        text.leftView = spacer
+        text.leftViewMode = .always
         text.layer.borderColor = UIColor.gray.cgColor
         text.layer.cornerRadius = 10
         text.layer.borderWidth = 0.5
@@ -90,7 +103,7 @@ class SignupViewController: UIViewController{
         button.setTitle("Continue", for: .normal)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-//        button.isEnabled = false
+        button.isEnabled = false
         button.backgroundColor = .gray
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -114,36 +127,51 @@ class SignupViewController: UIViewController{
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.tintColor = .black
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.text = "Sign Up"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign Up"
+//        title = "Sign Up"
         view.backgroundColor = .white
         setupView()
         setupConstraints()
-        addTarged()
-        //debo revisar el bottonque no quiere dar giros y tampoco quiere imprimi
-    }
+        addTarged()    }
     
     //MARK: - SetupView
     private func setupView(){
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         
-        [usernameTextField, emailTextField, passwordTextField, passwordConfTextField,errorPasswordLabel, buttonRegister, alreadyHaveAccount].forEach {
+        [titleLabel, usernameTextField, emailTextField, passwordTextField, passwordConfTextField,errorPasswordLabel, buttonRegister, alreadyHaveAccount
+        ].forEach {
             containerView.addSubview($0)
         }
     }
     
     private func setupConstraints(){
         NSLayoutConstraint.activate([
+            
+            titleLabel.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 100),
+            titleLabel.heightAnchor.constraint(equalToConstant: 60),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+    
             usernameTextField.heightAnchor.constraint(equalToConstant: 40),
-            usernameTextField.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 230),
+            usernameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
             usernameTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             usernameTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-            
+
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 10),
             emailTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
@@ -161,12 +189,12 @@ class SignupViewController: UIViewController{
 
             errorPasswordLabel.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 5),
             errorPasswordLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            
+
             buttonRegister.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 40),
             buttonRegister.heightAnchor.constraint(equalToConstant: 50),
             buttonRegister.widthAnchor.constraint(equalToConstant: 180),
             buttonRegister.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            
+
             alreadyHaveAccount.topAnchor.constraint(equalTo: buttonRegister.bottomAnchor, constant: 10),
             alreadyHaveAccount.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
 
@@ -180,7 +208,7 @@ class SignupViewController: UIViewController{
         
         passwordTextField.addTarget(self, action: #selector(self.validatePassword), for: UIControl.Event.editingDidEnd)
         
-        usernameTextField.addTarget(self, action: #selector(self.confirmationPassword), for: UIControl.Event.editingChanged)
+        passwordConfTextField.addTarget(self, action: #selector(self.confirmationPassword), for: UIControl.Event.editingChanged)
         
         buttonRegister.addTarget(self, action: #selector(self.registerUser), for: .touchUpInside)
     }
@@ -209,7 +237,7 @@ class SignupViewController: UIViewController{
 }
 
 //MARK: - ValidateDataDelegate, SignupViewModelDelegate
-extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
+extension SignupViewController: SignupViewModelDelegate{
     //    SignupViewModelDelegate
     func startAnimationButton() {
         buttonRegister.startAnimation()
@@ -224,7 +252,7 @@ extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
     }
     
     func hideLabel() {
-        errorPasswordLabel.isEnabled = true
+        errorPasswordLabel.isHidden = true
     }
     
     func activateButton() {
@@ -236,13 +264,13 @@ extension SignupViewController: ValidateDataDelegate, SignupViewModelDelegate{
         buttonRegister.isEnabled = false
         buttonRegister.backgroundColor = UIColor.systemGray
     }
-//    ValidateDataDelegate
-    func errorValidation(message: String) {
+
+    //    ValidateDataDelegate
+    func showInfo(message: String) {
         let alert = UIAlertController(title: Constants.ValidationMessages.titleModal, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
     }
-    
 
     
     

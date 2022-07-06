@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0903693F285FE2FF002D90E6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903693E285FE2FF002D90E6 /* SignupViewController.swift */; };
+		09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09276B25286F495E003D2A91 /* LogInViewController.swift */; };
 		09368B622815299B001DCEF0 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B612815299B001DCEF0 /* Movies.swift */; };
 		09368B642815B3B1001DCEF0 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09368B632815B3B0001DCEF0 /* MovieDetail.swift */; };
 		095EDE41281B7B3C00EED2B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 095EDE40281B7B3C00EED2B6 /* GoogleService-Info.plist */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0838E1912A0194BAC978FBC2 /* Pods-MovieApp 2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp 2.0.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp 2.0/Pods-MovieApp 2.0.debug.xcconfig"; sourceTree = "<group>"; };
 		0903693E285FE2FF002D90E6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		09276B25286F495E003D2A91 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		09368B612815299B001DCEF0 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		09368B632815B3B0001DCEF0 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		095EDE40281B7B3C00EED2B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		098ACF9928452A540057CEF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09276B25286F495E003D2A91 /* LogInViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				0903693F285FE2FF002D90E6 /* SignupViewController.swift in Sources */,
 				098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */,
 				098ACF91284528760057CEF4 /* Movie.swift in Sources */,
+				09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */,
 				09368B642815B3B1001DCEF0 /* MovieDetail.swift in Sources */,
 				098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */,
 				098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */,
