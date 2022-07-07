@@ -178,8 +178,11 @@ class LogInViewController: UIViewController{
         self.navigationController?.pushViewController(signupViewController, animated: true)
     }
 }
-//MARK: - LogInDelegate
+//MARK: - all Delegate
 extension LogInViewController: LogInDelegate{
+    
+    
+    //LogInDelegate
     func startSpinner() {
         buttonLogIn.startAnimation()
     }
@@ -203,6 +206,4 @@ extension LogInViewController: LogInDelegate{
         buttonLogIn.isEnabled = false
         buttonLogIn.backgroundColor = .systemGray
     }
-    
-    
 }
