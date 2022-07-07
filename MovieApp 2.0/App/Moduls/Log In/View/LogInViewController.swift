@@ -48,7 +48,7 @@ class LogInViewController: UIViewController{
         return label
     }()
     
-    private var emailTextField:  UITextField = {
+    private lazy var emailTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -58,11 +58,12 @@ class LogInViewController: UIViewController{
         text.layer.borderWidth = 0.5
         text.textContentType = .newPassword
         text.placeholder = "Email"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var passwordTextField:  UITextField = {
+    private lazy var passwordTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -73,6 +74,7 @@ class LogInViewController: UIViewController{
         text.isSecureTextEntry = true
         text.textContentType = .newPassword
         text.placeholder = "Password"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -103,7 +105,7 @@ class LogInViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Log In"
+        
         setupView()
         setupConstraint()
         addTarget()
@@ -113,6 +115,7 @@ class LogInViewController: UIViewController{
     
     
     private func setupView(){
+        view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -123,7 +126,7 @@ class LogInViewController: UIViewController{
     
     private func setupConstraint(){
         NSLayoutConstraint.activate([
-            labelTitle.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 80),
+            labelTitle.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 120),
             labelTitle.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
@@ -179,10 +182,26 @@ class LogInViewController: UIViewController{
     }
 }
 //MARK: - all Delegate
-extension LogInViewController: LogInDelegate{
+extension LogInViewController: LogInDelegate, UITextFieldDelegate{
+//    UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            scrollView.frame.origin.y -= 130
+        }
+    }
     
-    //LogInDelegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            scrollView.frame.origin.y = 0
+        }
+    }
+    
+//    LogInDelegate
     func startSpinner() {
         buttonLogIn.startAnimation()
     }
