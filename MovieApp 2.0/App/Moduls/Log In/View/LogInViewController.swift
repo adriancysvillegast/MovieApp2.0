@@ -11,9 +11,7 @@ import TransitionButton
 class LogInViewController: UIViewController{
     
     //MARK: - Properties
-    
-    lazy var contentViewSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-    
+
     private lazy var viewModel: LogInViewModel = {
         let viewModel = LogInViewModel()
         viewModel.delegate = self
