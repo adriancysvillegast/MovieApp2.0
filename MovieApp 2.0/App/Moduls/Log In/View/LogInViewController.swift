@@ -17,16 +17,7 @@ class LogInViewController: UIViewController{
         viewModel.delegate = self
         return viewModel
     }()
-    
-    private var labelTitle: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        label.text = "Log In"
-        label.tintColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+
     private lazy var emailTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
