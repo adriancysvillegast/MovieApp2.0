@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.6.1)
+  - IQKeyboardManagerSwift (6.3.0)
   - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
+  - IQKeyboardManagerSwift (= 6.3.0)
   - TransitionButton
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IQKeyboardManagerSwift
     - TransitionButton
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 942c58e41ad2ea926c64b3ec394b030a359c9d9a
+PODFILE CHECKSUM: f7eb00b4b86fd9e79cf33d4727759c80d690920d
 
 COCOAPODS: 1.11.3
