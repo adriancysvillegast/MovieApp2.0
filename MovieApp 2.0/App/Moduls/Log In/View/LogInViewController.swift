@@ -20,25 +20,6 @@ class LogInViewController: UIViewController{
         return viewModel
     }()
     
-    private lazy var scrollView: UIScrollView = {
-       let scroll = UIScrollView()
-        scroll.contentSize = contentViewSize
-        scroll.frame = self.view.bounds
-        scroll.autoresizingMask = .flexibleHeight
-        scroll.autoresizingMask = .flexibleWidth
-        scroll.backgroundColor = .white
-        scroll.showsHorizontalScrollIndicator = true
-        scroll.showsVerticalScrollIndicator = true
-        return scroll
-    }()
-    
-    private lazy var contentView: UIView = {
-       let view = UIView()
-        view.frame.size = contentViewSize
-        view.backgroundColor = .white
-        return view
-    }()
-    
     private var labelTitle: UILabel = {
        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
