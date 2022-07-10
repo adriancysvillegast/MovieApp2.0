@@ -84,7 +84,7 @@ class LogInViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Log In"
         setupView()
         setupConstraint()
         addTarget()
@@ -103,28 +103,25 @@ class LogInViewController: UIViewController{
     
     private func setupConstraint(){
         NSLayoutConstraint.activate([
-            labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
-            labelTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
-            emailTextField.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 40),
+            emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
             emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+//
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
+            passwordTextField.bottomAnchor.constraint(equalTo: buttonLogIn.topAnchor, constant: -20),
             passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+
             buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
-            buttonLogIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+            buttonLogIn.bottomAnchor.constraint(equalTo: buttonCreateAccount.topAnchor, constant: -10),
             buttonLogIn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             buttonLogIn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
-            buttonCreateAccount.topAnchor.constraint(equalTo: buttonLogIn.bottomAnchor, constant: 5),
+            buttonCreateAccount.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             buttonCreateAccount.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonCreateAccount.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            buttonCreateAccount.heightAnchor.constraint(equalToConstant: 30),
+            buttonCreateAccount.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
         ])
     }
     
