@@ -95,37 +95,35 @@ class LogInViewController: UIViewController{
     
     private func setupView(){
         view.backgroundColor = .white
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
         
-        [labelTitle, emailTextField, passwordTextField, buttonLogIn, buttonCreateAccount].forEach {
-            contentView.addSubview($0)
+        [emailTextField, passwordTextField, buttonLogIn, buttonCreateAccount].forEach {
+            view.addSubview($0)
         }
     }
     
     private func setupConstraint(){
         NSLayoutConstraint.activate([
-            labelTitle.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 120),
-            labelTitle.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            labelTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
+            labelTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
             emailTextField.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 40),
-            emailTextField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
             buttonLogIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            buttonLogIn.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonLogIn.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            buttonLogIn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            buttonLogIn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
             buttonCreateAccount.topAnchor.constraint(equalTo: buttonLogIn.bottomAnchor, constant: 5),
-            buttonCreateAccount.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonCreateAccount.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            buttonCreateAccount.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            buttonCreateAccount.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             buttonCreateAccount.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
@@ -166,18 +164,6 @@ extension LogInViewController: LogInDelegate, UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == passwordTextField {
-            scrollView.frame.origin.y -= 130
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == passwordTextField {
-            scrollView.frame.origin.y = 0
-        }
     }
     
 //    LogInDelegate
