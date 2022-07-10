@@ -64,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092E2F922879F76D00AD5015 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		098ACF8C284524E80057CEF4 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +186,7 @@
 		098ACFA128452BCB0057CEF4 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				092E2F922879F76D00AD5015 /* ViewModel */,
 				098ACFA228452BD60057CEF4 /* View */,
 			);
 			path = Welcome;
