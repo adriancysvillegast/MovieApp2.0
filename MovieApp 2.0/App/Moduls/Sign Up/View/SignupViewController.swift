@@ -113,17 +113,6 @@ class SignupViewController: UIViewController{
         return label
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.tintColor = .black
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        label.text = "Sign Up"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -220,26 +209,10 @@ class SignupViewController: UIViewController{
 extension SignupViewController: SignupViewModelDelegate, UITextFieldDelegate{
     
     //    UITextFieldDelegate
-//        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//            textField.resignFirstResponder()
-//            return true
-//        }
-//        
-//        func textFieldDidBeginEditing(_ textField: UITextField) {
-//
-//            if textField == passwordTextField || textField == passwordConfTextField {
-//                scrollView.frame.origin.y -= 160
-//            }
-//        }
-//
-//        func textFieldDidEndEditing(_ textField: UITextField) {
-//            if textField == usernameTextField || textField == emailTextField || textField == passwordTextField || textField == passwordConfTextField {
-//                scrollView.frame.origin.y = 0
-//            }
-//
-////            debo hacer otro if ya que no me cubre por completo
-//        }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     //    SignupViewModelDelegate
     func startAnimationButton() {
