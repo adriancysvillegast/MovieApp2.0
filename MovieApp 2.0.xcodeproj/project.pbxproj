@@ -158,10 +158,11 @@
 		098ACF8F284525110057CEF4 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				09A34205288067E500C06982 /* Home */,
 				092E2F97287B1E9800AD5015 /* Top Movie */,
-				098ACFA128452BCB0057CEF4 /* Welcome */,
 				098ACF9628452A270057CEF4 /* Sign Up */,
 				098ACF9528452A050057CEF4 /* Log In */,
+				098ACFA128452BCB0057CEF4 /* Welcome */,
 			);
 			path = Moduls;
 			sourceTree = "<group>";
@@ -272,6 +273,13 @@
 				09A34203287FC4B900C06982 /* TopMovieCustomCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		09A34205288067E500C06982 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		09A696692814816500D9A937 = {
