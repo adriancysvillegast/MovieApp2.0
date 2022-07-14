@@ -9,6 +9,7 @@ import Foundation
 
 protocol TopMovieViewModelDelegate: AnyObject {
     func reloadData()
+    func didError(message: String)
 }
 
 class TopMovieViewModel{
@@ -24,7 +25,8 @@ class TopMovieViewModel{
             self.topMovies = movies
             self.delegate?.reloadData()
         }, onError: {
-            print("error getting data")
+            
+            self.delegate?.didError(message: Constants.ErrorMessages.didError)
         })
     }
     

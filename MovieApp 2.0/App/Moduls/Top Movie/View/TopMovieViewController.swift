@@ -18,12 +18,6 @@ class TopMovieViewController: UIViewController{
         return viewModel
     }()
     
-    private var spinnerLoad: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView()
-        spinner.isHidden = true
-        return spinner
-    }()
-    
     lazy var atableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TopMovieCustomCell.self, forCellReuseIdentifier: TopMovieCustomCell().identifier)
@@ -36,7 +30,7 @@ class TopMovieViewController: UIViewController{
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Top Movies"
+        title = "Top 20 Rated Movies"
         setupView()
         setupConstrainst()
         
@@ -51,7 +45,7 @@ class TopMovieViewController: UIViewController{
     
     func setupConstrainst(){
         NSLayoutConstraint.activate([
- 
+
             atableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             atableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             atableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -65,25 +59,27 @@ class TopMovieViewController: UIViewController{
 
 //MARK: - UITableViewDelegate, UITableViewDataSource, TopMovieViewModelDelegate
 extension TopMovieViewController: UITableViewDelegate, UITableViewDataSource, TopMovieViewModelDelegate {
-    
+//    TopMovieViewModelDelegate
+    func didError(message: String) {
+        let alert = UIAlertController(title: Constants.ErrorMessages.title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(alert, animated: true)
+    }
+
     func reloadData() {
         atableView.reloadData()
     }
-    
+//    UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.topMovies.count ?? 0
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TopMovieCustomCell().identifier, for: indexPath) as! TopMovieCustomCell
         if let movie = viewModel?.showTopMovie(index: indexPath.row){
             cell.configureCell(model: movie)
         }
-        
         return cell
     }
-    
-    
     
 }

@@ -22,6 +22,10 @@ struct Constants{
         
     }
     
+    struct ErrorMessages {
+        static let title = "Error"
+        static let didError = "Ups!, we couldn't get data."
+    }
     
     struct API{
         
