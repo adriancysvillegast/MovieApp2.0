@@ -22,6 +22,7 @@
 		098B310A287B61C40059C6B8 /* TopMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B3109287B61C40059C6B8 /* TopMovieService.swift */; };
 		09A0A29E2814D250002A13A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0A29D2814D250002A13A7 /* Constants.swift */; };
 		09A341FF287F04E700C06982 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A341FE287F04E700C06982 /* UIImageView+Extension.swift */; };
+		09A34204287FC4B900C06982 /* TopMovieCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A34203287FC4B900C06982 /* TopMovieCustomCell.swift */; };
 		09A56F4928185753009FD4AE /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A56F4828185753009FD4AE /* MovieModel.swift */; };
 		09A56F4D281864F3009FD4AE /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A56F4C281864F3009FD4AE /* DetailModel.swift */; };
 		09A696762814816500D9A937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A696752814816500D9A937 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		098B3109287B61C40059C6B8 /* TopMovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMovieService.swift; sourceTree = "<group>"; };
 		09A0A29D2814D250002A13A7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		09A341FE287F04E700C06982 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		09A34203287FC4B900C06982 /* TopMovieCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMovieCustomCell.swift; sourceTree = "<group>"; };
 		09A56F4828185753009FD4AE /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		09A56F4C281864F3009FD4AE /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		09A696722814816500D9A937 /* MovieApp 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieApp 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 		092E2F9A287B1F4300AD5015 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09A34200287FB4C300C06982 /* Cells */,
 				092E2F9C287B1F7200AD5015 /* TopMovieViewController.swift */,
 			);
 			path = View;
@@ -261,6 +264,14 @@
 				09A56F4828185753009FD4AE /* MovieModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		09A34200287FB4C300C06982 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				09A34203287FC4B900C06982 /* TopMovieCustomCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		09A696692814816500D9A937 = {
@@ -437,6 +448,7 @@
 				09A0A29E2814D250002A13A7 /* Constants.swift in Sources */,
 				0903693F285FE2FF002D90E6 /* SignupViewController.swift in Sources */,
 				098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */,
+				09A34204287FC4B900C06982 /* TopMovieCustomCell.swift in Sources */,
 				098ACF91284528760057CEF4 /* Movie.swift in Sources */,
 				098B310A287B61C40059C6B8 /* TopMovieService.swift in Sources */,
 				09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */,

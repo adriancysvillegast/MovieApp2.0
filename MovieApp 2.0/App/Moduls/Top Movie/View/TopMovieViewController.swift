@@ -26,6 +26,7 @@ class TopMovieViewController: UIViewController{
     
     lazy var atableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(TopMovieCustomCell.self, forCellReuseIdentifier: TopMovieCustomCell().identifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,10 +76,11 @@ extension TopMovieViewController: UITableViewDelegate, UITableViewDataSource, To
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TopMovieCustomCell().identifier, for: indexPath) as! TopMovieCustomCell
         if let movie = viewModel?.showTopMovie(index: indexPath.row){
-            cell.textLabel?.text = movie.originalTitle
+            cell.configureCell(model: movie)
         }
+        
         return cell
     }
     
