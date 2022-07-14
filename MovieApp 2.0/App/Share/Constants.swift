@@ -12,6 +12,7 @@ struct Constants{
     struct Title{
         static let titleName = "Movies App"
     }
+    
     struct ValidationMessages{
         static let titleModal = " Error!"
         static let nameShort = "Please add a name with more than three character"
@@ -20,6 +21,7 @@ struct Constants{
         static let passwordError = "Ey! type a password with more than six charater and uses numbers, lowercase and uppercase letters"
         
     }
+    
     
     struct API{
         
@@ -30,6 +32,7 @@ struct Constants{
         struct Urls{
             
             static let urlTopMovies = "https://api.themoviedb.org/3/movie/popular?api_key=\(Constants.API.APIKey.keyValue)&language=en-US&page="
+            static let getImage = "https://image.tmdb.org/t/p/w500"
             static let urlSearcMoviePart1 = "https://api.themoviedb.org/3/movie/"
             static let urlSearcMoviePart2 = "?api_key=\(Constants.API.APIKey.keyValue)&language=en-US"
             

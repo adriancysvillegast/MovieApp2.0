@@ -67,7 +67,7 @@ class LogInViewController: UIViewController{
         button.setTitle("You do not have an account? Sign Up", for: .normal)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
