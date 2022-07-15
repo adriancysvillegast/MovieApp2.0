@@ -1,5 +1,5 @@
 //
-//  TopMovieService.swift
+//  TopMovieListService.swift
 //  MovieApp 2.0
 //
 //  Created by Adriancys Jesus Villegas Toro on 10/7/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TopMovieService{
+class TopMovieListService{
     
     func getTopMovie(onComplete: @escaping ([Movie]) -> Void, onError: @escaping ()-> Void) {
 
