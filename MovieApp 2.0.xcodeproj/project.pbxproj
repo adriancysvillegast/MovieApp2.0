@@ -34,6 +34,10 @@
 		09A696782814816500D9A937 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A696772814816500D9A937 /* SceneDelegate.swift */; };
 		09A6967F2814816A00D9A937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A6967E2814816A00D9A937 /* Assets.xcassets */; };
 		09A696822814816A00D9A937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A696802814816A00D9A937 /* LaunchScreen.storyboard */; };
+		09B4A5212881D7FA009EF7AE /* SpinnerLoadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4A5202881D7FA009EF7AE /* SpinnerLoadDelegate.swift */; };
+		09B4A5232881ED53009EF7AE /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4A5222881ED53009EF7AE /* MovieData.swift */; };
+		09B4A5282882087C009EF7AE /* CategoriesMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4A5272882087C009EF7AE /* CategoriesMovie.swift */; };
+		09B4A52C28820AE7009EF7AE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4A52B28820AE7009EF7AE /* Category.swift */; };
 		F17BA0EC42A26CFAA2107220 /* Pods_MovieApp_2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158A3D57E3F077C222D87395 /* Pods_MovieApp_2_0.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +72,10 @@
 		09A6967E2814816A00D9A937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A696812814816A00D9A937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09A696832814816A00D9A937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09B4A5202881D7FA009EF7AE /* SpinnerLoadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerLoadDelegate.swift; sourceTree = "<group>"; };
+		09B4A5222881ED53009EF7AE /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		09B4A5272882087C009EF7AE /* CategoriesMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesMovie.swift; sourceTree = "<group>"; };
+		09B4A52B28820AE7009EF7AE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		158A3D57E3F077C222D87395 /* Pods_MovieApp_2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp_2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C7FF382D3731FF527FC1CA /* Pods-MovieApp 2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp 2.0.release.xcconfig"; path = "Target Support Files/Pods-MovieApp 2.0/Pods-MovieApp 2.0.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,8 +121,6 @@
 		092E2F99287B1F3800AD5015 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09368B612815299B001DCEF0 /* Movies.swift */,
-				098ACF90284528760057CEF4 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +157,7 @@
 			children = (
 				098B2B05286D4401000478A9 /* ValidationsData.swift */,
 				09A341FE287F04E700C06982 /* UIImageView+Extension.swift */,
+				09B4A5202881D7FA009EF7AE /* SpinnerLoadDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -324,6 +331,8 @@
 		09A342092880685200C06982 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09B4A52A288208DC009EF7AE /* Categories */,
+				09B4A529288208B4009EF7AE /* Movies */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +384,25 @@
 				095EDE40281B7B3C00EED2B6 /* GoogleService-Info.plist */,
 			);
 			path = "MovieApp 2.0";
+			sourceTree = "<group>";
+		};
+		09B4A529288208B4009EF7AE /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				09B4A5222881ED53009EF7AE /* MovieData.swift */,
+				09368B612815299B001DCEF0 /* Movies.swift */,
+				098ACF90284528760057CEF4 /* Movie.swift */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		09B4A52A288208DC009EF7AE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				09B4A5272882087C009EF7AE /* CategoriesMovie.swift */,
+				09B4A52B28820AE7009EF7AE /* Category.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		4DAE92BD8ACD7B0454FB5721 /* Pods */ = {
@@ -518,18 +546,22 @@
 				098B2B06286D4401000478A9 /* ValidationsData.swift in Sources */,
 				09A3421A2880ED0B00C06982 /* TopMovieMoreCell.swift in Sources */,
 				09A56F4D281864F3009FD4AE /* DetailModel.swift in Sources */,
+				09B4A5232881ED53009EF7AE /* MovieData.swift in Sources */,
 				09A0A29E2814D250002A13A7 /* Constants.swift in Sources */,
 				0903693F285FE2FF002D90E6 /* SignupViewController.swift in Sources */,
 				098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */,
 				09A34204287FC4B900C06982 /* TopMovieCustomCell.swift in Sources */,
 				09A3421328807F9400C06982 /* TopMovieCell.swift in Sources */,
 				098ACF91284528760057CEF4 /* Movie.swift in Sources */,
+				09B4A5282882087C009EF7AE /* CategoriesMovie.swift in Sources */,
 				098B310A287B61C40059C6B8 /* TopMovieListService.swift in Sources */,
 				09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */,
 				092E2F9D287B1F7200AD5015 /* TopMovieViewController.swift in Sources */,
 				09A3420B2880687700C06982 /* HomeViewController.swift in Sources */,
 				09A342172880875E00C06982 /* TopMovieService.swift in Sources */,
 				09368B642815B3B1001DCEF0 /* MovieDetail.swift in Sources */,
+				09B4A5212881D7FA009EF7AE /* SpinnerLoadDelegate.swift in Sources */,
+				09B4A52C28820AE7009EF7AE /* Category.swift in Sources */,
 				09A341FF287F04E700C06982 /* UIImageView+Extension.swift in Sources */,
 				098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */,
 				098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */,

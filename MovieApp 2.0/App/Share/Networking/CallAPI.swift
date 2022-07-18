@@ -21,4 +21,5 @@ class CallAPI{
             completion(response.result)
         }
     }
+    
 }

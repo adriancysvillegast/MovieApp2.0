@@ -12,25 +12,27 @@ class TopMovieMoreCell: UICollectionViewCell {
     //MARK: - Properties
     let identifier = "TopMovieMoreCell"
     
-    private var moreMoviesButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "SeeMoreIcon"), for: .selected)
-        return button
+    private var imageViewMovie: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "SeeMoreIcon")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     //MARK: - Inicializer and setupViews
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        [moreMoviesButton].forEach {
+        [imageViewMovie].forEach {
             addSubview($0)
         }
         
         NSLayoutConstraint.activate([
-            moreMoviesButton.topAnchor.constraint(equalTo: topAnchor),
-            moreMoviesButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            moreMoviesButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            moreMoviesButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageViewMovie.topAnchor.constraint(equalTo: topAnchor),
+            imageViewMovie.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageViewMovie.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageViewMovie.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         
     }

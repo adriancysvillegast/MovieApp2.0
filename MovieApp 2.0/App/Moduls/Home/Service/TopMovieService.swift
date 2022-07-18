@@ -12,9 +12,11 @@ protocol TopMovieFetching{
 }
 
 class TopMovieService: TopMovieFetching {
+    private let baseURL = ProcessInfo.processInfo.environment["baseURL"]!
     
     func fetchTopMovies(onComplete: @escaping ([Movie]) -> (), onError: @escaping () -> ()) {
-        CallAPI.shared.get(url: Constants.API.Urls.urlTopMovies) { response in
+        CallAPI.shared.get(url: "\(baseURL)\(Constants.API.Urls.endpointTopMovie)") { response in
+            
             switch response{
             case .success(let data):
                 do{
@@ -22,6 +24,7 @@ class TopMovieService: TopMovieFetching {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let topMovies = try decoder.decode(Movies.self, from: safeData)
+                    
                     onComplete(topMovies.results)
                 }catch{
                     onError()
@@ -31,7 +34,4 @@ class TopMovieService: TopMovieFetching {
             }
         }
     }
-    
-    
-    
 }

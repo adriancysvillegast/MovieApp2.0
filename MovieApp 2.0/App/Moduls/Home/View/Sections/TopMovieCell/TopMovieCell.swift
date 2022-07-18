@@ -19,16 +19,6 @@ class TopMovieCell: UICollectionViewCell {
         return imageView
     }()
     
-    private var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textAlignment = .center
-        label.numberOfLines = 3
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     //MARK: - Inicializer and setupViews
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,8 +42,9 @@ class TopMovieCell: UICollectionViewCell {
     
     //MARK: - configureCell
     
-    func configureCell(model: Movie){
-        guard let urlString = URL(string: "\(Constants.API.Urls.getImage)\(model.posterPath)") else { return }
-        self.imageViewMovie.load(url: urlString)
+    func configureCell(model: MovieData ){
+        if let image = UIImage(data: model.dataImage){
+            self.imageViewMovie.image = image
+        }
     }
 }
