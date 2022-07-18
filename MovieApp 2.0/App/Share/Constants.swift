@@ -35,7 +35,12 @@ struct Constants{
         
         struct Urls{
             
-            static let urlTopMovies = "https://api.themoviedb.org/3/movie/popular?api_key=\(Constants.API.APIKey.keyValue)&language=en-US&page="
+            static let urlTopMovies = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=\(Constants.API.APIKey.keyValue)"
+            
+            static let endpointTopMovie = "/movie/popular?language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
+            
+            static let endpointCategories = "/genre/movie/list?&language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
+            
             static let getImage = "https://image.tmdb.org/t/p/w500"
             static let urlSearcMoviePart1 = "https://api.themoviedb.org/3/movie/"
             static let urlSearcMoviePart2 = "?api_key=\(Constants.API.APIKey.keyValue)&language=en-US"

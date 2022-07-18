@@ -15,7 +15,7 @@ protocol TopMovieViewModelDelegate: AnyObject {
 class TopMovieViewModel{
     
     //MARK: - Properties
-    private var service = TopMovieService()
+    private var service = TopMovieListService()
     var topMovies: [Movie] = []
     weak var delegate: TopMovieViewModelDelegate?
     
