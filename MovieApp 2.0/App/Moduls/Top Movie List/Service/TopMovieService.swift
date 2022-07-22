@@ -14,10 +14,9 @@ protocol TopMovieFeching{
 class TopMovieService: TopMovieFeching{
     private let baseURL = ProcessInfo.processInfo.environment["baseURL"]!
     private let endpointTopMovie = ProcessInfo.processInfo.environment["endpointTopMovie"]!
-    private let baseToken = ProcessInfo.processInfo.environment["baseToken"]!
     
     func topMovieFetch(onComplete: @escaping ([Movie]) -> (), onError: @escaping () -> ()) {
-        CallAPI.shared.get(url: ("\(baseURL)\(endpointTopMovie)\(baseToken)\(Constants.API.APIKey.keyValue)")) { response in
+        CallAPI.shared.get(url: ("\(baseURL)\(endpointTopMovie)api_key=\(Constants.API.APIKey.keyValue)")) { response in
             switch response {
             case .success(let data):
                 guard let safeData = data else { return }

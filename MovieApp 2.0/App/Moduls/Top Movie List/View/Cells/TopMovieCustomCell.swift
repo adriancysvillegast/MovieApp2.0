@@ -11,19 +11,19 @@ class TopMovieCustomCell: UITableViewCell {
 
     //MARK: - Properties
     let identifier = "TopMovieCustomCell"
-    
-    private let imageViewCell: UIImageView = {
+
+    let imageViewCell: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 10
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private var titleLabel: UILabel = {
+    var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         label.textAlignment = .left
+        label.numberOfLines = 4
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -38,12 +38,13 @@ class TopMovieCustomCell: UITableViewCell {
         NSLayoutConstraint.activate([
             imageViewCell.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             imageViewCell.widthAnchor.constraint(equalToConstant: 80),
-            imageViewCell.heightAnchor.constraint(equalToConstant: 80),
+            imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: 10),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 90),
   
         ])
     }
@@ -54,9 +55,8 @@ class TopMovieCustomCell: UITableViewCell {
     
 //MARK: - configureCell
     /**Set the value to the view**/
-    func configureCell(model: Movie){
-        guard let urlString = URL(string: "\(Constants.API.Urls.getImage)\(model.posterPath)") else { return }
-        self.imageViewCell.load(url: urlString)
+    func configureCell(model: MovieModel){
+        self.imageViewCell.image = UIImage(data: model.dataImage)
         self.titleLabel.text = model.originalTitle
     }
 }

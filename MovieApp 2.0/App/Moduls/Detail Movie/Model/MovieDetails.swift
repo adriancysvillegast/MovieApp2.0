@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+struct MovieDetails: Codable {
+    let adult : Bool
+    let genres : [Genre]
+    let id : Int
+    let originalLanguage : String
+    let originalTitle : String
+    let overview : String?
+    let popularity : Float
+    let posterPath : String?
+    let releaseDate : String
+    let voteAverage : Float
+    let voteCount : Int
+}

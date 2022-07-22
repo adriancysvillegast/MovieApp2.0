@@ -25,6 +25,7 @@ struct Constants{
     struct ErrorMessages {
         static let title = "Error"
         static let didError = "Ups!, we couldn't get data."
+        static let didErrorImage = "We have problems to load the image"
     }
     
     struct API{
@@ -34,19 +35,9 @@ struct Constants{
         }
         
         struct Urls{
-            
-            static let urlTopMovies = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=\(Constants.API.APIKey.keyValue)"
-            
-            static let endpointTopMovie = "/movie/popular?language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
-            
             static let endpointCategories = "/genre/movie/list?&language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
-            
-            static let getImage = "https://image.tmdb.org/t/p/w500"
-            static let urlSearcMoviePart1 = "https://api.themoviedb.org/3/movie/"
-            static let urlSearcMoviePart2 = "?api_key=\(Constants.API.APIKey.keyValue)&language=en-US"
-            
+
             struct InProcess {
-                
                 static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
                 static let urlSessionId = "https://api.themoviedb.org/3/authentication/session/new?api_key="
             }
