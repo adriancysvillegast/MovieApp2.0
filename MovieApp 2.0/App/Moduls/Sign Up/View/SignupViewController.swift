@@ -18,28 +18,8 @@ class SignupViewController: UIViewController{
         return viewModel
     }()
     
-    lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
-//    Views
-    private lazy var scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        scroll.contentSize = contentViewSize
-        scroll.frame = self.view.bounds
-        scroll.autoresizingMask = .flexibleHeight
-        scroll.autoresizingMask = .flexibleWidth
-        scroll.backgroundColor = .white
-        scroll.showsHorizontalScrollIndicator = true
-        scroll.showsVerticalScrollIndicator = true
-        return scroll
-    }()
-    
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.frame.size = contentViewSize
-        view.backgroundColor = .white
-        return view
-    }()
 //    TextFields
-    private var usernameTextField:  UITextField = {
+    private lazy var usernameTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -49,11 +29,12 @@ class SignupViewController: UIViewController{
         text.layer.borderWidth = 0.5
         text.textContentType = .username
         text.placeholder = "Add your name"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
 
-    private var emailTextField:  UITextField = {
+    private lazy var emailTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -63,11 +44,12 @@ class SignupViewController: UIViewController{
         text.layer.borderWidth = 0.5
         text.textContentType = .emailAddress
         text.placeholder = "Add your email"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var passwordTextField:  UITextField = {
+    private lazy var passwordTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -76,13 +58,14 @@ class SignupViewController: UIViewController{
         text.layer.cornerRadius = 10
         text.layer.borderWidth = 0.5
         text.placeholder = "Add your password"
+        text.delegate = self
         text.isSecureTextEntry = true
         text.textContentType = .newPassword
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var passwordConfTextField:  UITextField = {
+    private lazy var passwordConfTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -93,6 +76,7 @@ class SignupViewController: UIViewController{
         text.isSecureTextEntry = true
         text.textContentType = .newPassword
         text.placeholder = "Add your password again"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -113,6 +97,7 @@ class SignupViewController: UIViewController{
         let button = UIButton()
         button.setTitle("Do you already have account? Sign In", for: .normal)
         button.layer.cornerRadius = 10
+        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -128,80 +113,64 @@ class SignupViewController: UIViewController{
         return label
     }()
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.tintColor = .black
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        label.text = "Sign Up"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "Sign Up"
+        title = "Sign Up"
         view.backgroundColor = .white
         setupView()
         setupConstraints()
-        addTarged()    }
+        addTargets()    }
     
     //MARK: - SetupView
     private func setupView(){
-        view.addSubview(scrollView)
-        scrollView.addSubview(containerView)
-        
-        [titleLabel, usernameTextField, emailTextField, passwordTextField, passwordConfTextField,errorPasswordLabel, buttonRegister, alreadyHaveAccount
+        view.backgroundColor = .white
+//        view.addSubview(scrollView)
+//        scrollView.addSubview(containerView)
+
+        [ usernameTextField, emailTextField, passwordTextField, passwordConfTextField,errorPasswordLabel, buttonRegister, alreadyHaveAccount
         ].forEach {
-            containerView.addSubview($0)
+            view.addSubview($0)
         }
     }
     
     private func setupConstraints(){
         NSLayoutConstraint.activate([
-            
-            titleLabel.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 100),
-            titleLabel.heightAnchor.constraint(equalToConstant: 60),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-    
+ 
             usernameTextField.heightAnchor.constraint(equalToConstant: 40),
-            usernameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-            usernameTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            usernameTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
-
+            usernameTextField.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -5),
+            usernameTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            usernameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
-            emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 10),
-            emailTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            emailTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -5),
+            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
 
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            passwordTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            passwordTextField.bottomAnchor.constraint(equalTo: passwordConfTextField.topAnchor, constant: -5),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
 
             passwordConfTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordConfTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
-            passwordConfTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            passwordConfTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            passwordConfTextField.bottomAnchor.constraint(equalTo: buttonRegister.topAnchor, constant: -25),
+            passwordConfTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            passwordConfTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
 
             errorPasswordLabel.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 5),
-            errorPasswordLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            errorPasswordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            buttonRegister.topAnchor.constraint(equalTo: passwordConfTextField.bottomAnchor, constant: 40),
+            buttonRegister.bottomAnchor.constraint(equalTo: alreadyHaveAccount.topAnchor, constant: 8),
             buttonRegister.heightAnchor.constraint(equalToConstant: 50),
             buttonRegister.widthAnchor.constraint(equalToConstant: 180),
-            buttonRegister.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            buttonRegister.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            alreadyHaveAccount.topAnchor.constraint(equalTo: buttonRegister.bottomAnchor, constant: 10),
-            alreadyHaveAccount.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
-
+            alreadyHaveAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alreadyHaveAccount.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5)
         ])
     }
     //MARK: - Target
-    private func addTarged(){
+    private func addTargets(){
         usernameTextField.addTarget(self, action: #selector(self.validateName), for: UIControl.Event.editingDidEnd)
         
         emailTextField.addTarget(self, action: #selector(self.validateEmail), for: UIControl.Event.editingDidEnd)
@@ -236,8 +205,15 @@ class SignupViewController: UIViewController{
 
 }
 
-//MARK: - ValidateDataDelegate, SignupViewModelDelegate
-extension SignupViewController: SignupViewModelDelegate{
+//MARK: - All Delegate
+extension SignupViewController: SignupViewModelDelegate, UITextFieldDelegate{
+    
+    //    UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     //    SignupViewModelDelegate
     func startAnimationButton() {
         buttonRegister.startAnimation()
@@ -265,7 +241,6 @@ extension SignupViewController: SignupViewModelDelegate{
         buttonRegister.backgroundColor = UIColor.systemGray
     }
 
-    //    ValidateDataDelegate
     func showInfo(message: String) {
         let alert = UIAlertController(title: Constants.ValidationMessages.titleModal, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))

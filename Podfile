@@ -8,4 +8,5 @@ target 'MovieApp 2.0' do
   # Pods for MovieApp 2.0
     pod 'Alamofire', '~> 5.4'
     pod 'TransitionButton'
+    pod 'IQKeyboardManagerSwift', '6.3.0'
 end

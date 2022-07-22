@@ -10,8 +10,16 @@ import Alamofire
 
 class CallAPI{
     
-    func get(onComplete: @escaping () -> Void,
-             onError: @escaping () -> ()){
-        
+    //MARK: - Properties
+    static let shared = CallAPI()
+    
+    
+    //MARK: - Get
+    func get(url: String, completion: @escaping (Result<Data?, AFError>) -> () ) {
+        AF.request(url).response{
+            response in
+            completion(response.result)
+        }
     }
+    
 }

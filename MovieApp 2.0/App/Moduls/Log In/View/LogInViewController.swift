@@ -11,44 +11,14 @@ import TransitionButton
 class LogInViewController: UIViewController{
     
     //MARK: - Properties
-    
-    lazy var contentViewSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
-    
+
     private lazy var viewModel: LogInViewModel = {
         let viewModel = LogInViewModel()
         viewModel.delegate = self
         return viewModel
     }()
-    
-    private lazy var scrollView: UIScrollView = {
-       let scroll = UIScrollView()
-        scroll.contentSize = contentViewSize
-        scroll.frame = self.view.bounds
-        scroll.autoresizingMask = .flexibleHeight
-        scroll.autoresizingMask = .flexibleWidth
-        scroll.backgroundColor = .white
-        scroll.showsHorizontalScrollIndicator = true
-        scroll.showsVerticalScrollIndicator = true
-        return scroll
-    }()
-    
-    private lazy var contentView: UIView = {
-       let view = UIView()
-        view.frame.size = contentViewSize
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    private var labelTitle: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        label.text = "Log In"
-        label.tintColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var emailTextField:  UITextField = {
+
+    private lazy var emailTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -58,11 +28,12 @@ class LogInViewController: UIViewController{
         text.layer.borderWidth = 0.5
         text.textContentType = .newPassword
         text.placeholder = "Email"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var passwordTextField:  UITextField = {
+    private lazy var passwordTextField:  UITextField = {
         let spacer = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 40))
         let text = UITextField()
         text.leftView = spacer
@@ -73,6 +44,7 @@ class LogInViewController: UIViewController{
         text.isSecureTextEntry = true
         text.textContentType = .newPassword
         text.placeholder = "Password"
+        text.delegate = self
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -95,7 +67,7 @@ class LogInViewController: UIViewController{
         button.setTitle("You do not have an account? Sign Up", for: .normal)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -113,38 +85,34 @@ class LogInViewController: UIViewController{
     
     
     private func setupView(){
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        view.backgroundColor = .white
         
-        [labelTitle, emailTextField, passwordTextField, buttonLogIn, buttonCreateAccount].forEach {
-            contentView.addSubview($0)
+        [emailTextField, passwordTextField, buttonLogIn, buttonCreateAccount].forEach {
+            view.addSubview($0)
         }
     }
     
     private func setupConstraint(){
         NSLayoutConstraint.activate([
-            labelTitle.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 80),
-            labelTitle.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
-            emailTextField.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 40),
-            emailTextField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+            emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
+            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+//
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
-            passwordTextField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+            passwordTextField.bottomAnchor.constraint(equalTo: buttonLogIn.topAnchor, constant: -20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+
             buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
-            buttonLogIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            buttonLogIn.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonLogIn.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            buttonLogIn.bottomAnchor.constraint(equalTo: buttonCreateAccount.topAnchor, constant: -10),
+            buttonLogIn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            buttonLogIn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             
-            buttonCreateAccount.topAnchor.constraint(equalTo: buttonLogIn.bottomAnchor, constant: 5),
-            buttonCreateAccount.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonCreateAccount.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            buttonCreateAccount.heightAnchor.constraint(equalToConstant: 30),
+            buttonCreateAccount.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            buttonCreateAccount.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            buttonCreateAccount.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
         ])
     }
     
@@ -179,10 +147,14 @@ class LogInViewController: UIViewController{
     }
 }
 //MARK: - all Delegate
-extension LogInViewController: LogInDelegate{
+extension LogInViewController: LogInDelegate, UITextFieldDelegate{
+//    UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-    
-    //LogInDelegate
+//    LogInDelegate
     func startSpinner() {
         buttonLogIn.startAnimation()
     }
