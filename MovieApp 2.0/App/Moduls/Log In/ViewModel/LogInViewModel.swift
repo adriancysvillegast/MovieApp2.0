@@ -33,9 +33,10 @@ class LogInViewModel{
     func logIn(email: String, password: String){
         
         service?.logIn(onComplete: { token in
-            print(token)
+            let userDefault = UserDefaults.standard
+            userDefault.set(token.guestSessionId, forKey: Constants.UserDefaultKey.key)
         }, onError: { error in
-            print(error)
+            self.delegate?.showError(message: Constants.ErrorMessages.didErrorLogin)
         })
     }
     
