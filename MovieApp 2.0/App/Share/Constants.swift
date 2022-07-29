@@ -26,18 +26,17 @@ struct Constants{
         static let title = "Error"
         static let didError = "Ups!, we couldn't get data."
         static let didErrorImage = "We have problems to load the image"
+        static let didErrorLogin = "We couldn't log in, try again"
     }
     
     struct API{
 
         struct Urls{
             static let endpointCategories = "/genre/movie/list?&language=en-US&api_key="
-
-            struct InProcess {
-                static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
-                static let urlSessionId = "https://api.themoviedb.org/3/authentication/session/new?api_key="
-            }
         }
     }
 
+    struct UserDefaultKey {
+        static let key = "token"
+    }
 }
