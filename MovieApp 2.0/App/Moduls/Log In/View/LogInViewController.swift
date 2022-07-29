@@ -50,7 +50,7 @@ class LogInViewController: UIViewController{
     }()
     
     private var buttonLogIn: TransitionButton = {
-        let button = TransitionButton(frame: CGRect(x: 0, y: 0, width: 180, height: 50))
+        let button = TransitionButton()
         button.backgroundColor = UIColor.systemGreen
         button.setTitle("Continue", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -86,7 +86,6 @@ class LogInViewController: UIViewController{
     
     private func setupView(){
         view.backgroundColor = .white
-        
         [emailTextField, passwordTextField, buttonLogIn, buttonCreateAccount].forEach {
             view.addSubview($0)
         }
@@ -94,25 +93,24 @@ class LogInViewController: UIViewController{
     
     private func setupConstraint(){
         NSLayoutConstraint.activate([
-            
+            emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -250),
             emailTextField.heightAnchor.constraint(equalToConstant: 40),
-            emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
-            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-//
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-            passwordTextField.bottomAnchor.constraint(equalTo: buttonLogIn.topAnchor, constant: -20),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-
-            buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
-            buttonLogIn.bottomAnchor.constraint(equalTo: buttonCreateAccount.topAnchor, constant: -10),
-            buttonLogIn.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonLogIn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            emailTextField.widthAnchor.constraint(equalToConstant: 320),
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            buttonCreateAccount.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            buttonCreateAccount.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            buttonCreateAccount.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            passwordTextField.widthAnchor.constraint(equalToConstant: 320),
+            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            buttonLogIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 15),
+            buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
+            buttonLogIn.widthAnchor.constraint(equalToConstant: 160),
+            buttonLogIn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            buttonCreateAccount.topAnchor.constraint(equalTo: buttonLogIn.bottomAnchor, constant: 10),
+            buttonCreateAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
         ])
     }
     
@@ -129,7 +127,6 @@ class LogInViewController: UIViewController{
     }
     
     @objc func logInButton(){
-        print("ksbakjfb")
         viewModel.logIn(email: emailTextField.text!, password: passwordTextField.text!)
     }
      
@@ -163,7 +160,7 @@ extension LogInViewController: LogInDelegate, UITextFieldDelegate{
         buttonLogIn.stopAnimation()
     }
     
-    func showInfo(message: String) {
+    func showError(message: String) {
         let alert = UIAlertController(title: Constants.ValidationMessages.titleModal, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)

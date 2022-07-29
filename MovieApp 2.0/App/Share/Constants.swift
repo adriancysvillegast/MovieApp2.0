@@ -29,13 +29,9 @@ struct Constants{
     }
     
     struct API{
-        
-        struct APIKey {
-            static let keyValue = "72597abf4f8c2d4f845321712c1293d5"
-        }
-        
+
         struct Urls{
-            static let endpointCategories = "/genre/movie/list?&language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
+            static let endpointCategories = "/genre/movie/list?&language=en-US&api_key="
 
             struct InProcess {
                 static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="

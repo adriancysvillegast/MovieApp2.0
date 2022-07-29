@@ -7,7 +7,7 @@
 
 import Foundation
 protocol LogInDelegate: AnyObject{
-    func showInfo(message: String)
+    func showError(message: String)
     func activateButton()
     func desactivateButton()
     func startSpinner()
@@ -19,16 +19,24 @@ class LogInViewModel{
     
     let validationData = ValidationsData()
     weak var delegate: LogInDelegate?
+   
     private var emailValidation: Bool = false
     private var passwordValidation: Bool = false
+    private let service: LogInFeching?
     
+    init(service: LogInFeching = LogInService()) {
+        self.service = service
+    }
     
     //MARK: - LogIn
     
     func logIn(email: String, password: String){
-        self.delegate?.startSpinner()
         
-//        usar keychain para salvar el token
+        service?.logIn(onComplete: { token in
+            print(token)
+        }, onError: { error in
+            print(error)
+        })
     }
     
     //MARK: - Button Activate
@@ -51,7 +59,7 @@ class LogInViewModel{
         
         if !validationData.validationEmail(with: email){
             emailValidation = false
-            self.delegate?.showInfo(message: Constants.ValidationMessages.emailError)
+            self.delegate?.showError(message: Constants.ValidationMessages.emailError)
         }else{
             emailValidation = true
         }
@@ -75,5 +83,8 @@ class LogInViewModel{
         buttonActivate()
     }
     
+    //MARK: - Save Token
+    
     
 }
+

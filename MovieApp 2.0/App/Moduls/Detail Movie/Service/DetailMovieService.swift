@@ -16,11 +16,11 @@ class DetailMovieService: DetailMovieFeching {
     
     private let baseURL = ProcessInfo.processInfo.environment["baseURL"]!
     private let endpointSearch = ProcessInfo.processInfo.environment["endpointSearchMovie"]!
-    let token = Constants.API.APIKey.keyValue
+    private let apiKey = ProcessInfo.processInfo.environment["apiKey"]!
     
     //MARK: - Service
     func detailMovieFetch(nameMovie: Int, onComplete: @escaping (MovieDetails) -> (), onError: @escaping () -> ()) {
-        CallAPI.shared.get(url: "\(baseURL)\(endpointSearch)\(nameMovie)?api_key=\(token)") { response
+        CallAPI.shared.get(url: "\(baseURL)\(endpointSearch)\(nameMovie)?api_key=\(apiKey)") { response
             in
             switch response{
             case .success(let data):
