@@ -12,6 +12,7 @@ protocol LogInDelegate: AnyObject{
     func desactivateButton()
     func startSpinner()
     func stopSpinner()
+    func navigateVC()
 }
 
 class LogInViewModel{
@@ -31,11 +32,14 @@ class LogInViewModel{
     //MARK: - LogIn
     
     func logIn(email: String, password: String){
-        
+        self.delegate?.startSpinner()
         service?.logIn(onComplete: { token in
             let userDefault = UserDefaults.standard
             userDefault.set(token.guestSessionId, forKey: Constants.UserDefaultKey.key)
+            self.delegate?.stopSpinner()
+            self.delegate?.navigateVC()
         }, onError: { error in
+            self.delegate?.stopSpinner()
             self.delegate?.showError(message: Constants.ErrorMessages.didErrorLogin)
         })
     }
