@@ -22,6 +22,12 @@
 		0937D73C2892EA3200E780F3 /* UserSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937D73B2892EA3200E780F3 /* UserSessionRepository.swift */; };
 		0937D73E28934D3900E780F3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937D73D28934D3900E780F3 /* KeychainManager.swift */; };
 		095EDE41281B7B3C00EED2B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 095EDE40281B7B3C00EED2B6 /* GoogleService-Info.plist */; };
+		0975EA6C2896E9700040A948 /* GenreMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA6B2896E9700040A948 /* GenreMovie.swift */; };
+		0975EA702896EAAA0040A948 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA6F2896EAAA0040A948 /* Genres.swift */; };
+		0975EA722896EB8E0040A948 /* GenreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA712896EB8E0040A948 /* GenreService.swift */; };
+		0975EA742896F03F0040A948 /* GenreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA732896F03F0040A948 /* GenreViewModel.swift */; };
+		0975EA762896F1450040A948 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA752896F1450040A948 /* GenresViewController.swift */; };
+		0975EA79289703420040A948 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA78289703420040A948 /* GenreTableViewCell.swift */; };
 		098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACF932845293F0057CEF4 /* CallAPI.swift */; };
 		098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACFA328454A860057CEF4 /* LogInViewModel.swift */; };
 		098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B2B03286D3FB6000478A9 /* SignupViewModel.swift */; };
@@ -58,6 +64,12 @@
 		0937D73B2892EA3200E780F3 /* UserSessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionRepository.swift; sourceTree = "<group>"; };
 		0937D73D28934D3900E780F3 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		095EDE40281B7B3C00EED2B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0975EA6B2896E9700040A948 /* GenreMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreMovie.swift; sourceTree = "<group>"; };
+		0975EA6F2896EAAA0040A948 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		0975EA712896EB8E0040A948 /* GenreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreService.swift; sourceTree = "<group>"; };
+		0975EA732896F03F0040A948 /* GenreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewModel.swift; sourceTree = "<group>"; };
+		0975EA752896F1450040A948 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
+		0975EA78289703420040A948 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
 		098ACF932845293F0057CEF4 /* CallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallAPI.swift; sourceTree = "<group>"; };
 		098ACFA328454A860057CEF4 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		098B2B03286D3FB6000478A9 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +219,59 @@
 			path = UserRepository;
 			sourceTree = "<group>";
 		};
+		0975EA622896D9BF0040A948 /* Genres */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA662896DACE0040A948 /* Service */,
+				0975EA652896DAC60040A948 /* Model */,
+				0975EA642896DABE0040A948 /* View */,
+				0975EA632896DAB60040A948 /* ViewModel */,
+			);
+			path = Genres;
+			sourceTree = "<group>";
+		};
+		0975EA632896DAB60040A948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA732896F03F0040A948 /* GenreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0975EA642896DABE0040A948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA77289701450040A948 /* Cells */,
+				0975EA752896F1450040A948 /* GenresViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0975EA652896DAC60040A948 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA6B2896E9700040A948 /* GenreMovie.swift */,
+				0975EA6F2896EAAA0040A948 /* Genres.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0975EA662896DACE0040A948 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA712896EB8E0040A948 /* GenreService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0975EA77289701450040A948 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0975EA78289703420040A948 /* GenreTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		098ACF8C284524E80057CEF4 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,11 +305,12 @@
 		098ACF8F284525110057CEF4 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				0975EA622896D9BF0040A948 /* Genres */,
+				09190D982886E5B600B9EA77 /* Detail Movie */,
 				092E2F97287B1E9800AD5015 /* Top Movie List */,
 				098ACF9628452A270057CEF4 /* Sign Up */,
 				098ACF9528452A050057CEF4 /* Log In */,
 				098ACFA128452BCB0057CEF4 /* Welcome */,
-				09190D982886E5B600B9EA77 /* Detail Movie */,
 			);
 			path = Moduls;
 			sourceTree = "<group>";
@@ -525,19 +591,25 @@
 				09190D9E2887318000B9EA77 /* DetailMovieViewModel.swift in Sources */,
 				098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */,
 				0937D6CE288DB27A00E780F3 /* LogInModel.swift in Sources */,
+				0975EA742896F03F0040A948 /* GenreViewModel.swift in Sources */,
 				09190D972886E5AC00B9EA77 /* DetailMovieViewController.swift in Sources */,
 				09190DA22888D3A800B9EA77 /* MovieDetails.swift in Sources */,
+				0975EA722896EB8E0040A948 /* GenreService.swift in Sources */,
 				09A34204287FC4B900C06982 /* TopMovieCustomCell.swift in Sources */,
 				098B310A287B61C40059C6B8 /* TopMovieService.swift in Sources */,
+				0975EA762896F1450040A948 /* GenresViewController.swift in Sources */,
 				09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */,
 				0937D6D0288DC52400E780F3 /* GuestSession.swift in Sources */,
 				092E2F9D287B1F7200AD5015 /* TopMovieViewController.swift in Sources */,
 				0937D73E28934D3900E780F3 /* KeychainManager.swift in Sources */,
 				09B4A5412885EDB5009EF7AE /* Movie.swift in Sources */,
+				0975EA702896EAAA0040A948 /* Genres.swift in Sources */,
+				0975EA79289703420040A948 /* GenreTableViewCell.swift in Sources */,
 				09B4A5212881D7FA009EF7AE /* SpinnerLoadDelegate.swift in Sources */,
 				09A341FF287F04E700C06982 /* UIImageView+Extension.swift in Sources */,
 				09B4A5402885EDB5009EF7AE /* Movies.swift in Sources */,
 				098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */,
+				0975EA6C2896E9700040A948 /* GenreMovie.swift in Sources */,
 				098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */,
 				0937D73C2892EA3200E780F3 /* UserSessionRepository.swift in Sources */,
 				0937D6CB288B1DDB00E780F3 /* LogInService.swift in Sources */,

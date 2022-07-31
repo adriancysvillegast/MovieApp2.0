@@ -27,6 +27,7 @@ struct Constants{
         static let didError = "Ups!, we couldn't get data."
         static let didErrorImage = "We have problems to load the image"
         static let didErrorLogin = "We couldn't log in, try again"
+        static let didErrorGenre = "We couldn't load data"
     }
     
     struct API{

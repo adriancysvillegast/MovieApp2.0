@@ -12,7 +12,7 @@ class TopMovieViewController: UIViewController{
     
     //MARK: - Properties
 
-    private lazy var viewModel: TopMovieViewModel? = {
+    private lazy var viewModel: TopMovieViewModel = {
         let viewModel = TopMovieViewModel()
         viewModel.delegate = self
         viewModel.delegateSpinner = self
@@ -45,7 +45,7 @@ class TopMovieViewController: UIViewController{
         setupView()
         setupConstrainst()
         
-        viewModel?.getTopMovie()
+        viewModel.getTopMovie()
     }
     
     //MARK: - SetupView
@@ -74,23 +74,21 @@ class TopMovieViewController: UIViewController{
 extension TopMovieViewController: UITableViewDelegate, UITableViewDataSource {
 //    UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.topMovies.count ?? 0
+        return viewModel.topMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TopMovieCustomCell().identifier, for: indexPath) as! TopMovieCustomCell
         
-        if let movie = viewModel?.showTopMovie(index: indexPath.row){
-            cell.configureCell(model: movie)
-        }
-        
+        let movie = viewModel.showTopMovie(index: indexPath.row)
+        cell.configureCell(model: movie)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DetailMovieViewController()
-        vc.idMovie = viewModel?.showTopMovie(index: indexPath.row).id
+        vc.idMovie = viewModel.showTopMovie(index: indexPath.row).id
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
