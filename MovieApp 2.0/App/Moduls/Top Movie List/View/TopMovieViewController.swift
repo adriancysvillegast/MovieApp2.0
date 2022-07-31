@@ -50,6 +50,7 @@ class TopMovieViewController: UIViewController{
     
     //MARK: - SetupView
     func setupView() {
+        self.navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         view.addSubview(atableView)
         view.addSubview(spinner)

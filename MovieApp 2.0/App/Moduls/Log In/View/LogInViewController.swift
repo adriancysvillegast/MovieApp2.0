@@ -160,6 +160,11 @@ extension LogInViewController: LogInDelegate, UITextFieldDelegate{
         buttonLogIn.stopAnimation()
     }
     
+    func navigateVC() {
+        let vc = TopMovieViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func showError(message: String) {
         let alert = UIAlertController(title: Constants.ValidationMessages.titleModal, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
