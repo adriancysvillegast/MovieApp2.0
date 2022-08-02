@@ -13,6 +13,12 @@ class CallAPI{
     //MARK: - Properties
     static let shared = CallAPI()
     
+    //MARK: - Post
+    func post(url: String, params: [String:Any], completion: @escaping (Result<Data?, AFError>) -> () ) {
+        AF.request(url, method: .post, parameters: params).response{ response in
+            completion(response.result)
+        }
+    }
     
     //MARK: - Get
     func get(url: String, completion: @escaping (Result<Data?, AFError>) -> () ) {

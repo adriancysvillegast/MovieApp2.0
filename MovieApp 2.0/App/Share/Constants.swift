@@ -26,22 +26,18 @@ struct Constants{
         static let title = "Error"
         static let didError = "Ups!, we couldn't get data."
         static let didErrorImage = "We have problems to load the image"
+        static let didErrorLogin = "We couldn't log in, try again"
+        static let didErrorGenre = "We couldn't load data"
     }
     
     struct API{
-        
-        struct APIKey {
-            static let keyValue = "72597abf4f8c2d4f845321712c1293d5"
-        }
-        
-        struct Urls{
-            static let endpointCategories = "/genre/movie/list?&language=en-US&api_key=\(Constants.API.APIKey.keyValue)"
 
-            struct InProcess {
-                static let urlToken = "https://api.themoviedb.org/3/authentication/token/new?api_key="
-                static let urlSessionId = "https://api.themoviedb.org/3/authentication/session/new?api_key="
-            }
+        struct Urls{
+            static let endpointCategories = "/genre/movie/list?&language=en-US&api_key="
         }
     }
 
+    struct UserDefaultKey {
+        static let key = "token"
+    }
 }
