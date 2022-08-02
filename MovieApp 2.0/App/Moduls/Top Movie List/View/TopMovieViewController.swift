@@ -41,7 +41,7 @@ class TopMovieViewController: UIViewController{
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Top 20 Rated Movies"
+        title = "Top Movies"
         setupView()
         setupConstrainst()
         
@@ -67,7 +67,6 @@ class TopMovieViewController: UIViewController{
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
- 
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
