@@ -28,6 +28,7 @@
 		0975EA742896F03F0040A948 /* GenreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA732896F03F0040A948 /* GenreViewModel.swift */; };
 		0975EA762896F1450040A948 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA752896F1450040A948 /* GenresViewController.swift */; };
 		0975EA79289703420040A948 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA78289703420040A948 /* GenreTableViewCell.swift */; };
+		0975EA7B28983D240040A948 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0975EA7A28983D240040A948 /* TabBarController.swift */; };
 		098ACF942845293F0057CEF4 /* CallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACF932845293F0057CEF4 /* CallAPI.swift */; };
 		098ACFA428454A860057CEF4 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098ACFA328454A860057CEF4 /* LogInViewModel.swift */; };
 		098B2B04286D3FB6000478A9 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B2B03286D3FB6000478A9 /* SignupViewModel.swift */; };
@@ -70,6 +71,7 @@
 		0975EA732896F03F0040A948 /* GenreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewModel.swift; sourceTree = "<group>"; };
 		0975EA752896F1450040A948 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		0975EA78289703420040A948 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
+		0975EA7A28983D240040A948 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		098ACF932845293F0057CEF4 /* CallAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallAPI.swift; sourceTree = "<group>"; };
 		098ACFA328454A860057CEF4 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		098B2B03286D3FB6000478A9 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				098B2B05286D4401000478A9 /* ValidationsData.swift */,
 				09A341FE287F04E700C06982 /* UIImageView+Extension.swift */,
 				09B4A5202881D7FA009EF7AE /* SpinnerLoadDelegate.swift */,
+				0975EA7A28983D240040A948 /* TabBarController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				0975EA722896EB8E0040A948 /* GenreService.swift in Sources */,
 				09A34204287FC4B900C06982 /* TopMovieCustomCell.swift in Sources */,
 				098B310A287B61C40059C6B8 /* TopMovieService.swift in Sources */,
+				0975EA7B28983D240040A948 /* TabBarController.swift in Sources */,
 				0975EA762896F1450040A948 /* GenresViewController.swift in Sources */,
 				09276B26286F495E003D2A91 /* LogInViewController.swift in Sources */,
 				0937D6D0288DC52400E780F3 /* GuestSession.swift in Sources */,
