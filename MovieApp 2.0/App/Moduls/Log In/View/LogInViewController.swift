@@ -161,12 +161,9 @@ extension LogInViewController: LogInDelegate, UITextFieldDelegate{
     }
     
     func navigateVC() {
-//        let vc = TopMovieViewController()
-//        self.navigationController?.pushViewController(vc, animated: true)
         let tabBarVC = TabBarController()
-//        tabBarController?.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(tabBarVC, animated: true)
-//        present(tabBarVC, animated: true)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        present(tabBarVC, animated: true)
     }
     
     func showError(message: String) {
